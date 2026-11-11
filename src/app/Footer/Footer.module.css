@@ -1,0 +1,19 @@
+.footer { padding: 100px 32px 120px; background: #080808; color: #a3a3a3; font: 400 14px/1.7 ui-sans-serif, system-ui, sans-serif; }
+.panel { position: relative; isolation: isolate; max-width: 1040px; margin-inline: auto; padding: 64px 24px 0; border-top: 1px solid #262626; border-radius: 28px 28px 0 0; }
+.panel::before { content: ""; position: absolute; z-index: -1; top: 0; left: 12%; right: 12%; height: 150px; pointer-events: none; background: radial-gradient(ellipse at 50% 0, #ffffff12, transparent 70%); }
+.columns { display: grid; grid-template-columns: 1.6fr 1.25fr .9fr .9fr; gap: 40px; }
+.intro { max-width: 255px; }
+.brand { display: inline-flex; align-items: center; gap: 12px; color: #f5f5f5; font-size: 17px; font-weight: 600; text-decoration: none; line-height: 1.2; }
+.brandSub { display: block; margin-top: 5px; color: #b0b0b0; font-size: 8px; font-weight: 500; letter-spacing: .16em; }
+.intro p { margin-top: 20px; }
+.group h2 { margin: 0 0 20px; color: #ededed; font-size: 14px; font-weight: 600; }
+.group ul { display: flex; flex-direction: column; gap: 12px; padding: 0; margin: 0; list-style: none; }
+.footer a { transition: color 150ms; }
+.group a, .bottom a { color: #a3a3a3; text-decoration: none; }
+.footer a:hover { color: #fff; }
+.footer a:focus-visible { outline: 2px solid #aaa; outline-offset: 5px; border-radius: 2px; }
+.bottom { display: flex; justify-content: space-between; align-items: center; gap: 24px; border-top: 1px solid #262626; margin-top: 52px; padding-top: 24px; font-size: 12px; }
+.bottom p { margin: 0; }
+.bottom nav { display: flex; flex-wrap: wrap; gap: 22px; }
+@media(max-width:900px) { .columns { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 40px 32px; } .bottom { align-items: flex-start; flex-direction: column; gap: 16px; } }
+@media(max-width:540px) { .footer { padding: 64px 20px 60px; } .panel { padding: 40px 8px 0; } .columns { gap: 36px 20px; } .intro { grid-column: 1 / -1; max-width: 320px; } .group h2 { margin-bottom: 16px; } .group a { font-size: 13px; } .bottom { margin-top: 36px; } }

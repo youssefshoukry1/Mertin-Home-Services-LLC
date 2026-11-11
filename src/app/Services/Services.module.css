@@ -1,0 +1,74 @@
+@font-face {
+  font-family: "Services Inter";
+  src: url("/fonts/inter-300.ttf") format("truetype");
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Services Inter";
+  src: url("/fonts/inter-500.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Services Inter";
+  src: url("/fonts/inter-700.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+.section {
+  width: 100%;
+  padding: 64px 16px;
+  background: #090909;
+  font-family: "Services Inter", sans-serif;
+}
+.container { max-width: 1024px; margin-inline: auto; }
+.header { text-align: center; margin-bottom: 48px; }
+.header h2 {
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: -.025em;
+}
+.header p { margin: 0; color: #9ca3af; font-size: 18px; font-weight: 300; line-height: 28px; }
+.grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 320px;
+  padding: 24px;
+  border-radius: 24px;
+  background: rgb(31 41 55 / 50%);
+  text-decoration: none;
+  transition: background-color 300ms;
+}
+.card:hover, .card:focus-visible { background: #1f2937; }
+.card:focus-visible { outline: 2px solid #e5e7eb; outline-offset: 5px; }
+.images { position: relative; display: flex; flex-grow: 1; align-items: center; justify-content: center; margin-bottom: 16px; }
+.images img { position: absolute; width: min(250px, 80%); height: auto; border-radius: 8px; transition: transform 400ms ease-in-out; }
+.backImage { transform: rotate(-6deg); box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a; }
+.frontImage { transform: rotate(3deg); box-shadow: 0 10px 15px -3px #0000001a, 0 4px 6px -4px #0000001a; }
+.card:hover .backImage, .card:focus-visible .backImage { transform: rotate(-10deg) scale(1.05); }
+.card:hover .frontImage, .card:focus-visible .frontImage { transform: rotate(5deg) scale(1.05); }
+.card h3 { margin: auto 0 0; color: #f3f4f6; font-size: 18px; font-weight: 500; line-height: 28px; }
+@media (min-width: 640px) {
+  .section { padding: 80px 24px; }
+  .header { margin-bottom: 64px; }
+  .header h2 { margin-bottom: 16px; font-size: 48px; line-height: 1; }
+  .header p { font-size: 20px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .card:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc((100% - 24px) / 2); }
+}
+@media (min-width: 1024px) {
+  .section { padding-block: 96px; }
+  .header h2 { font-size: 60px; }
+  .grid { gap: 32px; }
+  .card:last-child:nth-child(odd) { width: calc((100% - 32px) / 2); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card, .images img { transition: none; }
+  .card:hover .backImage, .card:focus-visible .backImage { transform: rotate(-6deg); }
+  .card:hover .frontImage, .card:focus-visible .frontImage { transform: rotate(3deg); }
+}

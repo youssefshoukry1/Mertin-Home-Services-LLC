@@ -1,0 +1,29 @@
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-background: var(--lanyard-background);
+  --color-foreground: var(--lanyard-foreground);
+  --color-card: var(--lanyard-card);
+  --color-card-foreground: var(--lanyard-foreground);
+  --color-muted: var(--lanyard-muted);
+  --color-muted-foreground: var(--lanyard-muted-foreground);
+  --color-border: var(--lanyard-border);
+  --color-ring: var(--lanyard-ring);
+  --color-chart-1: #2563eb;
+  --color-chart-2: #10b981;
+  --color-chart-3: #f59e0b;
+  --color-chart-4: #a855f7;
+  --color-chart-5: #f43f5e;
+}
+
+.about-mertin {
+  --lanyard-background: #0a0a0a;
+  --lanyard-foreground: #fafafa;
+  --lanyard-card: #171717;
+  --lanyard-muted: #262626;
+  --lanyard-muted-foreground: #a3a3a3;
+  --lanyard-border: #303030;
+  --lanyard-ring: #a3a3a3;
+  color-scheme: dark;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
