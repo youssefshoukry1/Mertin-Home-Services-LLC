@@ -27,3 +27,12 @@
   color-scheme: dark;
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
+.about-mertin [data-slot="team-lanyard-rail"] { contain: layout style; }
+.about-mertin [data-badge][data-active] [data-flip], .about-mertin [data-badge]:focus-visible [data-flip] { will-change: transform; }
+@media (max-width: 767px), (pointer: coarse) {
+  .about-mertin [data-shadow] { display: none; }
+  .about-mertin [data-hang] > span[aria-hidden="true"][style*="filter"] { display: none; }
+  .about-mertin [data-strap] > span[class*="blur"] { display: none; }
+  .about-mertin [data-face] > span[style*="--gx"] { display: none; }
+  .about-mertin [data-face] { box-shadow: none; }
+}

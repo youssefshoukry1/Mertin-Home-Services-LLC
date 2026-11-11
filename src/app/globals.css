@@ -1,6 +1,15 @@
 @import "tailwindcss";
 @import "./About/about.css";
 
+@font-face { font-family: "Edge Albert Sans"; src: url('/fonts/edge-albert.ttf') format('truetype'); font-weight: 300; font-display: swap; }
+@font-face { font-family: "Edge Manrope"; src: url('/fonts/edge-manrope.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Edge IBM Plex Mono"; src: url('/fonts/edge-plex.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+@theme {
+  --font-display: "Edge Albert Sans", sans-serif;
+  --font-body: "Edge Manrope", sans-serif;
+  --font-kicker: "Edge IBM Plex Mono", monospace;
+}
+
 :root {
   color-scheme: light;
   background: white;

@@ -280,6 +280,8 @@ export function TeamLanyardRail({ items, eyebrow, heading, caption, action, auto
     const [innerActive, setInnerActive] = React.useState(null);
     const [innerFlipped, setInnerFlipped] = React.useState(null);
     const [focusIndex, setFocusIndex] = React.useState(0);
+    const visibilityRef = React.useRef(false);
+    const [inView, setInView] = React.useState(false);
     const [reduced, setReduced] = React.useState(false);
     const [playing, setPlaying] = React.useState(autoplay);
     const pendingOpen = React.useRef(-1);
@@ -345,8 +347,10 @@ export function TeamLanyardRail({ items, eyebrow, heading, caption, action, auto
         const s = sim.current;
         const g = live.current.geo;
         const slot = slots.current[i];
-        if (!slot)
-            return;
+        if (!slot) return;
+        const outside = live.current.size.carousel && Math.abs((s.x[i] ?? 0) - live.current.size.width / 2) > live.current.size.width / 2 + g.W;
+        slot.style.visibility = outside ? 'hidden' : 'visible';
+        if (outside) return;
         slot.style.transform = `translate3d(${((s.x[i] ?? 0) - g.W / 2).toFixed(2)}px,0,0)`;
         const sw = s.sw[i] ?? 0;
         const swing = swings.current[i];
@@ -388,6 +392,8 @@ export function TeamLanyardRail({ items, eyebrow, heading, caption, action, auto
     const step = React.useCallback((now) => {
         const s = sim.current;
         const L = live.current;
+        if (!visibilityRef.current || document.hidden) { s.raf = 0; s.last = 0; return; }
+        if (L.size.carousel && s.last && now - s.last < 1000 / 30) { s.raf = requestAnimationFrame(step); return; }
         const n = L.count;
         const g = L.geo;
         const { width, carousel } = L.size;
@@ -575,7 +581,7 @@ export function TeamLanyardRail({ items, eyebrow, heading, caption, action, auto
     }, [paint]);
     const kick = React.useCallback(() => {
         const s = sim.current;
-        if (live.current.reduced) {
+        if (!visibilityRef.current || document.hidden || live.current.reduced) {
             cancelAnimationFrame(s.raf);
             s.raf = 0;
             snap();
@@ -651,15 +657,30 @@ export function TeamLanyardRail({ items, eyebrow, heading, caption, action, auto
     }, [size, active, flipped, count, paint, kick]);
     React.useEffect(() => { if (reduced)
         kick(); }, [reduced, kick]);
+    React.useEffect(() => {
+        const stage = stageRef.current;
+        if (!stage) return;
+        let intersects = false;
+        const update = () => {
+            const visible = intersects && !document.hidden;
+            visibilityRef.current = visible;
+            setInView(visible);
+            if (visible) kick(); else { cancelAnimationFrame(sim.current.raf); sim.current.raf = 0; sim.current.last = 0; }
+        };
+        const observer = new IntersectionObserver(([entry]) => { intersects = entry.isIntersecting; update(); });
+        observer.observe(stage);
+        document.addEventListener('visibilitychange', update);
+        return () => { observer.disconnect(); document.removeEventListener('visibilitychange', update); };
+    }, [kick]);
     const swayed = React.useRef(false);
     const ready = size.width > 0;
     React.useEffect(() => {
-        if (!ready || reduced || swayed.current)
+        if (!ready || reduced || !inView || size.carousel || swayed.current)
             return;
         const timers = Array.from({ length: count }, (_, i) => window.setTimeout(() => impulse(i, (i % 2 ? -1 : 1) * (30 - (i % 4) * 3)), 60 + i * 70));
         const done = window.setTimeout(() => { swayed.current = true; }, 80 + count * 70);
         return () => { timers.forEach((t) => window.clearTimeout(t)); window.clearTimeout(done); };
-    }, [ready, reduced, count, impulse]);
+    }, [ready, reduced, count, impulse, inView, size.carousel]);
     React.useEffect(() => () => { cancelAnimationFrame(sim.current.raf); sim.current.raf = 0; }, []);
     const previous = React.useRef({ active: null, flipped: null });
     React.useEffect(() => {
@@ -687,7 +708,7 @@ export function TeamLanyardRail({ items, eyebrow, heading, caption, action, auto
     }, [active, flipped, count, impulse, tug]);
     const stop = React.useCallback(() => setPlaying(false), []);
     React.useEffect(() => {
-        if (!playing || reduced || count === 0 || !ready)
+        if (!playing || reduced || !inView || size.carousel || count === 0 || !ready)
             return;
         let timer = 0;
         function front(index) {
@@ -701,7 +722,7 @@ export function TeamLanyardRail({ items, eyebrow, heading, caption, action, auto
         const current = live.current.active;
         timer = current === null ? window.setTimeout(() => front(0), FIRST_DELAY) : window.setTimeout(() => flip(current), FLIP_DELAY);
         return () => window.clearTimeout(timer);
-    }, [playing, reduced, count, ready, interval, setActive, setFlipped]);
+    }, [playing, reduced, count, ready, interval, setActive, setFlipped, inView, size.carousel]);
     React.useEffect(() => {
         if (flipped === null)
             return;
