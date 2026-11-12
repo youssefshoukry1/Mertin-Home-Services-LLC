@@ -101,3 +101,20 @@
   .mobile-nav-panel .services-dropdown-panel { position: static; width: 100%; margin: 4px 0; box-shadow: none; background: #101010; }
 }
 @media(prefers-reduced-motion: reduce) { .services-trigger svg { transition: none; } }
+.hero-light { background: #f7f7f5; color: #252525; color-scheme: light; }
+.hero-light .hero-header { background: #f7f7f5; }
+.hero-light .nav-brand { color: #252525; }
+.hero-light .nav-brand-caption { color: #686868; }
+.hero-light .nav-pill { background: #ececea; border-color: #dededb; }
+.hero-light .nav-item { color: #686868; }
+.hero-light .nav-item:hover, .hero-light .nav-item[aria-current="page"] { color: #252525; }
+.hero-light .nav-item:hover { background: #ffffff80; }
+.hero-light .nav-request { background: #292929; color: #fff; }
+.hero-light .nav-request:hover { background: #414141; }
+.hero-light .mobile-navigation summary { background: #ececea; border-color: #dededb; color: #252525; }
+.hero-light .mobile-nav-panel, .hero-light .services-dropdown-panel { background: #f7f7f5; border-color: #dededb; box-shadow: 0 14px 32px #25252512; }
+.hero-light .services-dropdown-panel a { color: #686868; }
+.hero-light .services-dropdown-panel a:hover, .hero-light .services-dropdown-panel a:focus-visible, .hero-light .services-dropdown-panel a[aria-current="page"] { background: #ececea; color: #252525; }
+
+:root { background:#f7f7f5; color:#252525; --lanyard-background:#f7f7f5; --lanyard-foreground:#252525; --lanyard-muted:#ececea; --lanyard-muted-foreground:#686868; --lanyard-border:#dededb; }
+body { background:#f7f7f5; color:#252525; }

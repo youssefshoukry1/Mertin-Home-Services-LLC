@@ -27,11 +27,11 @@ export default async function ServicePage({ params }) {
   const { slug } = await params;
   if (!services[slug]) notFound();
   return (
-    <main className="hero-dark">
+    <main className="hero-light">
       <Navbar />
-      <ServiceHero />
+      <ServiceHero serviceSlug={slug} />
       <About />
-      <BeforeAfter />
+      <BeforeAfter serviceSlug={slug} />
       <ServiceFaq />
       <Contact defaultService={slug} />
     </main>

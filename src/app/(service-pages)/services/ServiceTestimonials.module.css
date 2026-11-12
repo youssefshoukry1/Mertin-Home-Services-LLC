@@ -17,3 +17,9 @@
 @media(max-width: 767px) { .section { padding: 56px 28px; } .inner { grid-template-columns: 1fr; gap: 48px; max-width: 460px; } .portraits { height: 360px; margin-inline: 16px; } .portrait { height: 340px; } .copy { min-height: 310px; } .text h2 { font-size: 24px; } .role { font-size: 16px; } .quote { font-size: 17px; margin-top: 24px; } }
 @media(max-width: 380px) { .portraits { height: 310px; } .portrait { height: 290px; } }
 @media(prefers-reduced-motion: reduce) { .controls button, .controls svg { transition: none; } }
+
+.section { background:#f7f7f5; color:#252525; }
+.role,.quote { color:#686868; }
+.controls button { background:#ececea; color:#252525; }
+.controls button:hover { background:#dededb; }
+.controls button:focus-visible { outline-color:#686868; }

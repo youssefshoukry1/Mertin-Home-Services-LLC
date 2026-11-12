@@ -27,7 +27,7 @@ export default function Globe({ textureSrc = "/images/globe-texture.png", fullSp
         const compile=(type,source)=>{const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){gl.deleteShader(s);throw Error('shader');}return s;};
         const vs=compile(gl.VERTEX_SHADER,'attribute vec2 position; varying vec2 uv; void main(){uv=position*.5+.5;gl_Position=vec4(position,0.,1.);}');
         const fs=compile(gl.FRAGMENT_SHADER,`precision mediump float; varying vec2 uv; uniform sampler2D earth; uniform float angle; uniform float tilt; uniform vec2 resolution;
-          void main(){float radius=${fullSphere ? "min(resolution.x,resolution.y)*.46" : "max(resolution.x*.56,resolution.y*.52)"};vec2 p=${fullSphere ? "(uv-.5)*resolution/radius" : "vec2((uv.x-.5)*resolution.x,uv.y*resolution.y-.85*resolution.y+radius)/radius"};float r=1.;float d=dot(p,p);vec3 bg=vec3(.02745);if(d>r*r){gl_FragColor=vec4(bg,1.);return;}
+          void main(){float radius=${fullSphere ? "min(resolution.x,resolution.y)*.46" : "max(resolution.x*.56,resolution.y*.52)"};vec2 p=${fullSphere ? "(uv-.5)*resolution/radius" : "vec2((uv.x-.5)*resolution.x,uv.y*resolution.y-.85*resolution.y+radius)/radius"};float r=1.;float d=dot(p,p);vec3 bg=vec3(.02745);if(d>r*r){gl_FragColor=vec4(.96863,.96863,.96078,1.);return;}
           vec3 n=vec3(p,sqrt(r*r-d))/r;vec3 q=vec3(n.x,n.y*cos(tilt)+n.z*sin(tilt),n.z*cos(tilt)-n.y*sin(tilt));
           vec2 st=vec2(fract(.5+(atan(q.x,q.z)+angle)/6.2831853),.5-asin(clamp(q.y,-1.,1.))/3.1415927);
           vec3 color=texture2D(earth,st).rgb*(.52+.48*max(0.,dot(n,normalize(vec3(-.25,.7,1.)))));
@@ -44,7 +44,7 @@ export default function Globe({ textureSrc = "/images/globe-texture.png", fullSp
           float marker=max(dotCore,max(ring,glow))*smoothstep(.02,.18,n.z);
           color=mix(color,vec3(.95,.96,.94),marker);
           ${fullSphere ? "color+=vec3(.2)*smoothstep(.975,1.,sqrt(d));" : ""}
-          gl_FragColor=vec4(color,1.);}`);
+          float ink=clamp((dot(color,vec3(.299,.587,.114))-.02745)*.65,0.,.7); gl_FragColor=vec4(vec3(.96863,.96863,.96078)-vec3(ink),1.);}`);
         program=gl.createProgram();gl.attachShader(program,vs);gl.attachShader(program,fs);gl.linkProgram(program);gl.deleteShader(vs);gl.deleteShader(fs);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error('program');gl.useProgram(program);angleUniform=gl.getUniformLocation(program,"angle");tiltUniform=gl.getUniformLocation(program,"tilt");resolutionUniform=gl.getUniformLocation(program,"resolution");
         buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);const a=gl.getAttribLocation(program,'position');gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);
         texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.REPEAT);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);

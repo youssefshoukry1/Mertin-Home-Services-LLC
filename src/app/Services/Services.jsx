@@ -3,13 +3,13 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./Services.module.css";
 
-// Original reference artwork is temporary until service photography is selected.
+// User-provided service photography.
 const services = [
-  { title: "Handyman Services", slug: "handyman-services", images: [1, 2] },
-  { title: "Home Repairs", slug: "home-repairs", images: [3, 4] },
-  { title: "Assembly & Installation", slug: "assembly-installation", images: [5, 6] },
-  { title: "Cleaning Services", slug: "cleaning-services", images: [7, 8] },
-  { title: "Home Renovation", slug: "home-renovation", images: [1, 2] },
+  { title: "Handyman Services", slug: "handyman-services",  },
+  { title: "Home Repairs", slug: "home-repairs",  },
+  { title: "Assembly & Installation", slug: "assembly-installation",  },
+  { title: "Cleaning Services", slug: "cleaning-services",  },
+  { title: "Home Renovation", slug: "home-renovation",  },
 ];
 
 export default function Services() {
@@ -62,15 +62,9 @@ export default function Services() {
               style={{ "--offset": position, "--depth": Math.abs(position), zIndex: 10 - Math.abs(distance), transition: drag ? "none" : undefined }}
             >
               <div className={styles.images} aria-hidden="true">
+                <span className={styles.backImage} />
                 <img
-                  src={`/images/services/reference-${service.images[0]}.png`}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  className={styles.backImage}
-                />
-                <img
-                  src={`/images/services/reference-${service.images[1]}.png`}
+                  src={`/services%20images/${service.slug === "home-repairs" ? "home%20repairs" : service.slug}.webp`}
                   alt=""
                   loading="lazy"
                   decoding="async"

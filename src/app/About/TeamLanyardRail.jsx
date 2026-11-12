@@ -217,6 +217,16 @@ const BadgeFaces = React.memo(function BadgeFaces({ item, tone }) {
     const [failed, setFailed] = React.useState(false);
     const tags = (item.tags ?? []).slice(0, 3);
     const links = (item.links ?? []).slice(0, 3);
+    if (item.review) return <>{[false, true].map((back) => <span key={String(back)} data-face={back ? "back" : "front"} className="review-badge absolute inset-0 flex flex-col items-center overflow-hidden rounded-[0.85em] border border-border bg-card text-card-foreground [backface-visibility:hidden]" style={{ transform: back ? "rotateY(180deg) translateZ(1px)" : "translateZ(1px)" }}>
+      <Band tone={tone} />
+      <Hole />
+      <span className="review-avatar"><img src={item.image} alt="" draggable={false} loading="lazy" /></span>
+      <span className="review-name">{item.name}</span>
+      <span className="review-stars" aria-label={`${item.rating} out of 5 stars`}><span aria-hidden="true">{"★".repeat(item.rating)}<span className="review-empty">{"☆".repeat(5-item.rating)}</span></span></span>
+      <span className="review-comment">{item.bio}</span>
+      <span className="review-source">Sample review</span>
+      <Finish />
+    </span>)}</>;
     return (<>
       <span data-face="front" className="absolute inset-0 flex flex-col items-center overflow-hidden rounded-[0.85em] border border-border bg-card px-[0.8em] pb-[0.7em] text-card-foreground [backface-visibility:hidden]" style={{ transform: "translateZ(1px)" }}>
         <Band tone={tone} tall/>
@@ -991,7 +1001,7 @@ export function TeamLanyardRail({ items, eyebrow, heading, caption, action, comp
         </div>
 
         {items.map((item, i) => {
-            const tone = TONES[((item.tone ?? (i % 5) + 1) - 1) % TONES.length] ?? TONES[0];
+            const tone = item.review ? "text-[#626760]" : TONES[((item.tone ?? (i % 5) + 1) - 1) % TONES.length] ?? TONES[0];
             const isActive = active === i;
             const isFlipped = flipped === i;
             const strap = g.straps[i] ?? 0;

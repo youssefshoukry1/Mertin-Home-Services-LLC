@@ -9,7 +9,7 @@ import ServiceAreas from "./ServiceAreas/ServiceAreas";
 export default function Home() {
   return (
     <main>
-      <div className="hero-dark">
+      <div className="hero-light">
         <Navbar />
         <EdgeBannerCard />
       </div>

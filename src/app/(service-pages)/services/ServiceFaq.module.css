@@ -18,3 +18,9 @@
 .answer p { margin: 0; padding: 0 0 18px; font-size: 14px; line-height: 22px; color: #a3a3a3; }
 @media(max-width: 767px) { .section { padding: 80px 24px; } .panel { grid-template-columns: 1fr; } .intro { padding: 32px 24px; border-right: 0; border-bottom: 1px solid #232323; } .intro h2 { font-size: 36px; letter-spacing: -1.5px; } .questions { padding: 12px 24px 20px; } }
 @media(prefers-reduced-motion: reduce) { .answer, .item svg { transition: none; } }
+
+.section { background:#f7f7f5; color:#252525; }
+.panel { border-color:#dededb; outline-color:#ececea; }
+.intro,.item { border-color:#dededb; }
+.intro p,.answer p,.item svg { color:#686868; }
+.item button { color:#252525; }

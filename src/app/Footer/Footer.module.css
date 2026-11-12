@@ -17,3 +17,10 @@
 .bottom nav { display: flex; flex-wrap: wrap; gap: 22px; }
 @media(max-width:900px) { .columns { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 40px 32px; } .bottom { align-items: flex-start; flex-direction: column; gap: 16px; } }
 @media(max-width:540px) { .footer { padding: 64px 20px 60px; } .panel { padding: 40px 8px 0; } .columns { gap: 36px 20px; } .intro { grid-column: 1 / -1; max-width: 320px; } .group h2 { margin-bottom: 16px; } .group a { font-size: 13px; } .bottom { margin-top: 36px; } }
+
+.footer { background:#f7f7f5; color:#686868; }
+.panel,.bottom { border-color:#dededb; }
+.panel::before { background:radial-gradient(ellipse at 50% 0,#25252508,transparent 70%); }
+.brand,.group h2 { color:#252525; }
+.brandSub,.group a,.bottom a { color:#686868; }
+.footer a:hover { color:#252525; }

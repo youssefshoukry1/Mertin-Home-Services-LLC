@@ -3,9 +3,16 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./ServiceHero.module.css";
 
-const images = Array.from({ length: 8 }, (_, index) => `/images/service-hero/image-${index + 1}.webp`);
-
-export default function ServiceHero() {
+export default function ServiceHero({ serviceSlug = "handyman-services" }) {
+  const sourceName = serviceSlug === "home-repairs" ? "home%20repairs" : serviceSlug;
+  const images = [
+    `/services%20images/${sourceName}.webp`,
+    `/images/service-hero/${serviceSlug}-1.webp`,
+    `/images/service-hero/${serviceSlug}-2.webp`,
+    `/images/services/${serviceSlug}-back.webp`,
+    `/images/service-hero/${serviceSlug}-4.webp`,
+    `/images/service-hero/${serviceSlug}-3.webp`,
+  ];
   const section = useRef(null);
   const [playing, setPlaying] = useState(false);
   useEffect(() => {

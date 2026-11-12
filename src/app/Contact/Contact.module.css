@@ -49,3 +49,23 @@
 .serviceOptions li[data-focused="true"] { background: #393939; color: #fff; }
 .serviceOptions li[aria-selected="true"] { color: #fff; }
 @media(prefers-reduced-motion:reduce) { .serviceTrigger svg { transition: none; } }
+
+.section { background:#f7f7f5; color:#252525; }
+.badge { background:#ececea; color:#686868; border:0; box-shadow:none; }
+.heading p,.details > p,.formHeader p,.info li { color:#686868; }
+.info li > span { background:#ececea; border:0; color:#686868; }
+.form { background:#ececea; color:#252525; }
+.form label,.serviceLabel { color:#686868; }
+.form input:not([type=file]),.form textarea,.form select,.upload input,.serviceTrigger { background:#f7f7f5; color:#252525; color-scheme:light; }
+.form input::placeholder,.form textarea::placeholder { color:#777; }
+.form input:focus-visible,.form textarea:focus-visible,.serviceTrigger:focus-visible,.serviceTrigger[aria-expanded="true"] { background:#fff; }
+.upload input::file-selector-button { background:#dededb; color:#252525; }
+.upload small { color:#686868; }
+.submit { background:#292929; color:#fff; }
+.submit:hover { background:#414141; }
+.submit:focus-visible { outline-color:#686868; }
+.notice { color:#65513b; }
+.serviceOptions { background:#fff; box-shadow:0 12px 28px #25252514; }
+.serviceOptions li { color:#686868; }
+.serviceOptions li[data-focused="true"] { background:#ececea; color:#252525; }
+.serviceOptions li[aria-selected="true"] { color:#252525; }

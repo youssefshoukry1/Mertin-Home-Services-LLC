@@ -8,3 +8,7 @@
 }
 .comparison [role="slider"] { border-color: #363636; }
 .comparison [role="slider"]:focus-visible { outline: 2px solid #fafafa; outline-offset: 5px; }
+
+.comparison { --lanyard-muted:#ececea; --lanyard-muted-foreground:#686868; --lanyard-border:#dededb; background:#f7f7f5; color:#252525; }
+.comparison [role="slider"] { border-color:#dededb; }
+.comparison [role="slider"]:focus-visible { outline-color:#686868; }

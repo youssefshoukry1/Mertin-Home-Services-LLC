@@ -2,7 +2,7 @@
 import { Check, GripHorizontal, GripVertical, Sparkles, Zap } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./BeforeAfter.module.css";
-const Badge = ({ children }) => <span className="inline-flex items-center rounded-full border border-transparent bg-neutral-800 px-2.5 py-0.5 text-xs font-semibold text-white">{children}</span>;
+const Badge = ({ children }) => <span className="inline-flex items-center rounded-full border border-transparent bg-neutral-200 px-2.5 py-0.5 text-xs font-semibold text-neutral-700">{children}</span>;
 const cn = (...classes) => classes.filter(Boolean).join(" ");
 export const reveal2Demo = {
     badge: { label: "Compare", variant: "secondary" },
@@ -185,4 +185,14 @@ export function Reveal2({ badge, heading, description, highlights = [], beforeIm
       </div>
     </section>);
 }
-export default function BeforeAfter() { return <Reveal2 {...reveal2Demo}/>; }
+const transformations = {
+  "handyman-services": ["Small fixes, everyday comfort", "A sagging closet shelf and loose rail restored to a useful storage space.", "Level shelving", "Secure fittings", "Practical storage"],
+  "home-repairs": ["Give your home a fresh finish", "Damaged drywall and chipped trim repaired for a smooth, consistent finish.", "Patched drywall", "Restored trim", "Matching paint"],
+  "assembly-installation": ["From parts to ready to use", "Flat-pack panels become a neatly assembled cabinet in the same space.", "Careful assembly", "Aligned doors", "Ready for everyday use"],
+  "cleaning-services": ["A cleaner space to come home to", "Everyday kitchen buildup removed from the cooktop, counters, and sink.", "Clean cooking surfaces", "Fresh countertops", "Polished sink"],
+  "home-renovation": ["A fresh start for your space", "Worn walls, flooring, and trim refreshed while keeping the room familiar.", "Freshly painted walls", "Updated flooring", "Finished trim"],
+};
+export default function BeforeAfter({ serviceSlug = "handyman-services" }) {
+  const [heading, description, ...details] = transformations[serviceSlug] || transformations["handyman-services"];
+  return <Reveal2 {...reveal2Demo} heading={heading} description={description + " Drag to compare this illustrative transformation."} badge={{ label: "Illustrative transformation" }} highlights={details.map((title, i) => ({ id: String(i), title }))} beforeImage={{ src: `/images/before-after/${serviceSlug}-before.webp`, alt: `${heading}: before work (generated illustration)` }} afterImage={{ src: `/images/before-after/${serviceSlug}-after.webp`, alt: `${heading}: after work (generated illustration)` }} />;
+}

@@ -32,3 +32,14 @@
 .globeHint { position: absolute; left: 50%; bottom: 40px; transform: translateX(-50%); z-index: 1; pointer-events: none; color: #8b8b8b; font-size: 12px; letter-spacing: .04em; }
 .globeHint { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
 .locationDot { width: 6px; height: 6px; flex-shrink: 0; border-radius: 50%; background: #f2f5ef; box-shadow: 0 0 0 4px #ffffff12, 0 0 12px #ffffff30; }
+
+.section { background:#f7f7f5; color:#252525; }
+.header { text-shadow:none; }
+.header > p:first-child,.header > span,.coverage,.globeHint { color:#686868; }
+.cta { background:#292929; color:#fff; border:0; }
+.cta:hover { background:#414141; }
+.cta:focus-visible { outline-color:#686868; }
+.frame { border-color:#dededb; background:#ececea; box-shadow:0 16px 50px #25252512; }
+.map { filter:none; color-scheme:light; }
+.globeBackground { background-image:none; }
+.locationDot { background:#686868; box-shadow:0 0 0 4px #2525250a; }
