@@ -1,4 +1,47 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+
+const services = [
+  ["Handyman Services", "handyman-services"],
+  ["Home Repairs", "home-repairs"],
+  ["Assembly & Installation", "assembly-installation"],
+  ["Cleaning Services", "cleaning-services"],
+  ["Home Renovation", "home-renovation"],
+];
+
+function ServicesDropdown() {
+  const [open, setOpen] = useState(false);
+  const root = useRef(null);
+  const trigger = useRef(null);
+  const pathname = usePathname();
+  useEffect(() => { setOpen(false); }, [pathname]);
+  useEffect(() => {
+    if (!open) return;
+    const close = (event) => { if (!root.current?.contains(event.target)) setOpen(false); };
+    document.addEventListener("pointerdown", close);
+    return () => document.removeEventListener("pointerdown", close);
+  }, [open]);
+  return (
+    <div className="services-dropdown" ref={root} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false); }} onKeyDown={(event) => {
+      if (event.key === "Escape") { setOpen(false); trigger.current?.focus(); }
+      if (event.key === "ArrowDown" && event.target === trigger.current) { event.preventDefault(); setOpen(true); requestAnimationFrame(() => root.current?.querySelector("a")?.focus()); }
+    }}>
+      <button ref={trigger} type="button" className="nav-item services-trigger" aria-expanded={open} onClick={() => setOpen(!open)}>
+        Services
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+      </button>
+      {open && <div className="services-dropdown-panel">
+        {services.map(([label, slug]) => <Link key={slug} href={`/services/${slug}`} aria-current={pathname === `/services/${slug}` ? "page" : undefined} onClick={(event) => {
+          setOpen(false);
+          event.currentTarget.closest("details")?.removeAttribute("open");
+        }}>{label}</Link>)}
+      </div>}
+    </div>
+  );
+}
 
 const links = [
   ["Home", "/"],
@@ -9,8 +52,9 @@ const links = [
 ];
 
 function NavigationLinks() {
-  return links.map(([label, href]) => (
-    <Link key={href} href={href} className="nav-item" aria-current={href === "/" ? "page" : undefined}>
+  const pathname = usePathname();
+  return links.map(([label, href]) => label === "Services" ? <ServicesDropdown key={href} /> : (
+    <Link key={href} href={href} className="nav-item" aria-current={href === pathname ? "page" : undefined}>
       {label}
     </Link>
   ));

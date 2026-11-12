@@ -5,7 +5,7 @@ export default function Globe({ textureSrc = "/images/globe-texture.png", fullSp
   const ref=useRef(null);
   useEffect(()=>{
     const c=ref.current, reduced=matchMedia('(prefers-reduced-motion: reduce)');
-    let gl,program,buffer,texture,img,angleUniform,tiltUniform,resolutionUniform,ready=false,visible=false,disposed=false,raf=0,angle=-Math.PI/2,velocity=0,tilt=.32,tiltVelocity=0,drag=null,last=0,targetAngle=-Math.PI/2,targetTilt=.32;
+    let gl,program,buffer,texture,img,angleUniform,tiltUniform,resolutionUniform,ready=false,visible=false,disposed=false,raf=0,angle=-Math.PI/2,velocity=0,tilt=.32,tiltVelocity=0,drag=null,last=0,targetAngle=-Math.PI/2,targetTilt=.32,interacted=false;
     const request=()=>{if(ready&&visible&&!document.hidden&&!raf)raf=requestAnimationFrame(draw);};
     function draw(now) {
       raf=0;
@@ -14,8 +14,8 @@ export default function Globe({ textureSrc = "/images/globe-texture.png", fullSp
       if(elapsed<1000/30&&!drag&&!reduced.matches){request();return;}
       const seconds=Math.min(elapsed/1000,.1);
       last=now;
-      if(!drag&&!reduced.matches){targetAngle+=.045*seconds+velocity*seconds*60;velocity*=Math.pow(.92,seconds*60);targetTilt+=tiltVelocity*seconds*60;tiltVelocity*=Math.pow(.92,seconds*60);}
-      const follow=reduced.matches?1:1-Math.exp(-12*seconds);angle+=(targetAngle-angle)*follow;tilt+=(targetTilt-tilt)*follow;
+      if(!drag&&!reduced.matches){targetAngle+=(interacted?0:.045*seconds)+velocity*seconds*60;velocity*=Math.pow(.92,seconds*60);targetTilt=Math.max(-1.2,Math.min(1.2,targetTilt+tiltVelocity*seconds*60));tiltVelocity*=Math.pow(.92,seconds*60);}
+      const follow=reduced.matches||drag?1:1-Math.exp(-12*seconds);angle+=(targetAngle-angle)*follow;tilt+=(targetTilt-tilt)*follow;
       gl.uniform1f(angleUniform,angle);gl.uniform1f(tiltUniform,tilt);
       gl.drawArrays(gl.TRIANGLES,0,6);
       if(!reduced.matches)request();
@@ -53,10 +53,10 @@ export default function Globe({ textureSrc = "/images/globe-texture.png", fullSp
     };
     const io=new IntersectionObserver(([e])=>{visible=e.isIntersecting;if(visible){if(!gl)init();last=performance.now();request();}else{cancelAnimationFrame(raf);raf=0;velocity=0;tiltVelocity=0;}});io.observe(c);
     const ro=new ResizeObserver(resize);ro.observe(c);
-    const down=e=>{if(drag||(e.pointerType==='mouse'&&e.button!==0))return;targetAngle=angle;targetTilt=tilt;drag={x:e.clientX,y:e.clientY,id:e.pointerId,time:performance.now()};velocity=0;tiltVelocity=0;c.setPointerCapture(e.pointerId);};
-    const move=e=>{if(!drag||drag.id!==e.pointerId)return;const scale=Math.min(c.clientWidth,c.clientHeight);const dx=(e.clientX-drag.x)/scale*1.2;const dy=(e.clientY-drag.y)/scale*1.2;const now=performance.now(),dt=Math.max(now-drag.time,8);targetAngle+=dx;targetTilt+=dy;velocity=velocity*.75+Math.max(-.012,Math.min(.012,dx*16.67/dt))*.25;tiltVelocity=tiltVelocity*.75+Math.max(-.012,Math.min(.012,dy*16.67/dt))*.25;drag.x=e.clientX;drag.y=e.clientY;drag.time=now;request();};
+    const down=e=>{if(drag||(e.pointerType==='mouse'&&e.button!==0))return;interacted=true;targetAngle=angle;targetTilt=tilt;drag={x:e.clientX,y:e.clientY,id:e.pointerId,time:performance.now()};velocity=0;tiltVelocity=0;c.setPointerCapture(e.pointerId);};
+    const move=e=>{if(!drag||drag.id!==e.pointerId)return;const scale=Math.min(c.clientWidth,c.clientHeight);const dx=-(e.clientX-drag.x)/scale*1.2;const dy=(e.clientY-drag.y)/scale*1.2;const now=performance.now(),dt=Math.max(now-drag.time,8);targetAngle+=dx;targetTilt=Math.max(-1.2,Math.min(1.2,targetTilt+dy));velocity=velocity*.75+Math.max(-.012,Math.min(.012,dx*16.67/dt))*.25;tiltVelocity=tiltVelocity*.75+Math.max(-.012,Math.min(.012,dy*16.67/dt))*.25;drag.x=e.clientX;drag.y=e.clientY;drag.time=now;request();};
     const up=()=>{if(drag&&performance.now()-drag.time>80){velocity=0;tiltVelocity=0;}drag=null;request();};
-    const key=e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){e.preventDefault();if(e.key==='ArrowLeft')targetAngle-=.15;if(e.key==='ArrowRight')targetAngle+=.15;if(e.key==='ArrowUp')targetTilt-=.15;if(e.key==='ArrowDown')targetTilt+=.15;velocity=0;tiltVelocity=0;request();}};
+    const key=e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){e.preventDefault();interacted=true;if(e.key==='ArrowLeft')targetAngle+=.15;if(e.key==='ArrowRight')targetAngle-=.15;if(e.key==='ArrowUp')targetTilt-=.15;if(e.key==='ArrowDown')targetTilt+=.15;targetTilt=Math.max(-1.2,Math.min(1.2,targetTilt));velocity=0;tiltVelocity=0;request();}};
     const visibility=()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;velocity=0;tiltVelocity=0;}else {last=performance.now();request();}};
     const lost=e=>{e.preventDefault();ready=false;c.style.opacity='0';cancelAnimationFrame(raf);raf=0;};
     const motion=()=>{velocity=0;tiltVelocity=0;last=performance.now();request();};reduced.addEventListener('change',motion);
@@ -64,5 +64,5 @@ export default function Globe({ textureSrc = "/images/globe-texture.png", fullSp
     Object.entries(handlers).forEach(([name,fn])=>c.addEventListener(name,fn));document.addEventListener('visibilitychange',visibility);
     return()=>{disposed=true;reduced.removeEventListener("change",motion);cancelAnimationFrame(raf);io.disconnect();ro.disconnect();if(img)img.onload=null;Object.entries(handlers).forEach(([name,fn])=>c.removeEventListener(name,fn));document.removeEventListener('visibilitychange',visibility);if(gl){gl.deleteTexture(texture);gl.deleteBuffer(buffer);gl.deleteProgram(program);}};
   },[textureSrc,fullSphere]);
-  return <canvas ref={ref} className={styles.globeCanvas} style={{ touchAction: fullSphere ? "none" : "pan-y" }} tabIndex={0} role="img" aria-label="Interactive globe. Drag in any direction or use the arrow keys to explore continents."/>;
+  return <canvas ref={ref} className={styles.globeCanvas} style={{ touchAction: "none" }} tabIndex={0} role="img" aria-label="Interactive globe. Drag in any direction or use the arrow keys to explore continents."/>;
 }

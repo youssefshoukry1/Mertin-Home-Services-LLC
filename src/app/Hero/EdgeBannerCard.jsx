@@ -41,7 +41,7 @@ export function EdgeBannerCard() {
             WebkitMaskImage: "linear-gradient(to left, #000 0%, #000 34%, rgba(0,0,0,0.35) 62%, transparent 88%)",
         }} draggable={false}/>
 
-        <div className="relative flex flex-col gap-8 px-6 py-12 md:max-w-[56%] md:px-12 md:py-20">
+        <div className="relative flex flex-col gap-8 px-6 pt-12 pb-6 md:max-w-[56%] md:px-12 md:py-20">
           <div className="flex flex-wrap gap-2">
             {PILLS.map((p, i) => (<motion.span key={p} className="rounded-lg border border-white/20 px-3 py-1.5 font-kicker text-[10px] tracking-[0.1em] text-white/75 uppercase" initial={reduced ? { opacity: 0 } : { opacity: 0, x: -14 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{
                 duration: reduced ? 0.3 : 0.6,
@@ -88,6 +88,10 @@ export function EdgeBannerCard() {
               <ArrowRight aria-hidden className="ml-2.5 h-[15px] w-[15px] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/k:translate-x-1" strokeWidth={1.9}/>
             </a>
           </motion.div>
+        </div>
+        <div className="relative h-[300px] w-full overflow-hidden sm:h-[380px] md:hidden" aria-hidden="true">
+          <span className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse at 65% 60%, rgba(200,52,32,0.55), rgba(140,24,28,0.28) 46%, transparent 80%)" }} />
+          <img src={IMAGE} alt="" className="pointer-events-none h-full w-full object-cover object-[56%_35%] opacity-85 mix-blend-luminosity" style={{ maskImage: "linear-gradient(to bottom, transparent, #000 22%)", WebkitMaskImage: "linear-gradient(to bottom, transparent, #000 22%)" }} draggable={false} />
         </div>
       </motion.div>
     </section>);

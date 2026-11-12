@@ -1,0 +1,20 @@
+.section { padding: 150px 40px; background: #090909; color: #f5f5f5; font-family: Arial, Helvetica, sans-serif; }
+.panel { max-width: 1120px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid #232323; outline: 1px solid #151515; outline-offset: 4px; }
+.intro { padding: 64px 40px; border-right: 1px solid #232323; }
+.eyebrow { display: block; margin-bottom: 18px; font-family: monospace; font-size: 10px; line-height: 16px; font-weight: 600; letter-spacing: 2px; }
+.intro h2 { margin: 0 0 16px; font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: clamp(32px, 3.5vw, 48px); line-height: 1.05; letter-spacing: -2px; }
+.intro p { max-width: 410px; margin: 0; font-size: 14px; line-height: 21px; color: #a3a3a3; }
+.questions { padding: 18px 32px; }
+.item { border-bottom: 1px solid #262626; }
+.item h3 { margin: 0; }
+.item button { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; padding: 19px 0; background: transparent; color: #f5f5f5; border: 0; text-align: left; font-family: inherit; font-size: 14px; font-weight: 600; line-height: 20px; cursor: pointer; }
+.item button:hover span { text-decoration: underline; text-underline-offset: 3px; }
+.item button:focus-visible { outline: 2px solid #a3a3a3; outline-offset: 3px; border-radius: 2px; }
+.item svg { flex-shrink: 0; color: #a3a3a3; transition: transform 250ms ease; }
+.item button[aria-expanded="true"] svg { transform: rotate(180deg); }
+.answer { display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden; transition: grid-template-rows 280ms ease, opacity 200ms ease, visibility 280ms; }
+.answer[data-open="true"] { grid-template-rows: 1fr; opacity: 1; visibility: visible; }
+.answer > div { overflow: hidden; min-height: 0; }
+.answer p { margin: 0; padding: 0 0 18px; font-size: 14px; line-height: 22px; color: #a3a3a3; }
+@media(max-width: 767px) { .section { padding: 80px 24px; } .panel { grid-template-columns: 1fr; } .intro { padding: 32px 24px; border-right: 0; border-bottom: 1px solid #232323; } .intro h2 { font-size: 36px; letter-spacing: -1.5px; } .questions { padding: 12px 24px 20px; } }
+@media(prefers-reduced-motion: reduce) { .answer, .item svg { transition: none; } }

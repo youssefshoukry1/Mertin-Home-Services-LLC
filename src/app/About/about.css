@@ -28,6 +28,8 @@
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
 .about-mertin [data-slot="team-lanyard-rail"] { contain: layout style; }
+.about-compact { padding: 12px 0 20px; }
+.about-compact [data-stage] { margin-top: 0; }
 .about-mertin [data-badge][data-active] [data-flip], .about-mertin [data-badge]:focus-visible [data-flip] { will-change: transform; }
 @media (max-width: 767px), (pointer: coarse) {
   .about-mertin [data-shadow] { display: none; }

@@ -91,11 +91,8 @@ export const LANYARD_DEMO_TEAM = [
         links: [{ label: "Email", href: "#" }, { label: "Calendar", href: "#" }],
     },
 ];
-export default function TeamLanyardRailDemo({ autoplay = true }) {
-    return (<div id="about" data-lanyard-demo className="about-mertin dark flex min-h-svh w-full items-center justify-center bg-background text-foreground">
-      <TeamLanyardRail items={LANYARD_DEMO_TEAM} eyebrow="Meet the team · Eight people" heading="A team wall you can flip through, right on the page." caption="Brush along the rail to meet someone, pull a badge down, click to flip it." autoplay={autoplay} action={<button type="button" className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background shadow-sm outline-none transition-[transform,box-shadow] hover:-translate-y-px hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none">
-            <span aria-hidden="true" className="size-1.5 rounded-full bg-chart-2"/>
-            We're hiring
-          </button>}/>
+export default function TeamLanyardRailDemo() {
+    return (<div data-lanyard-demo className="about-mertin about-compact dark w-full bg-background text-foreground">
+      <TeamLanyardRail items={LANYARD_DEMO_TEAM} autoplay={false} compact />
     </div>);
 }

@@ -88,3 +88,16 @@
 .hero-dark .nav-request:hover { background: #fff; }
 .hero-dark .mobile-navigation summary { border-color: #ffffff1a; background: #ffffff08; color: #f5f5f5; }
 .hero-dark .mobile-nav-panel { border-color: #303030; background: #171717; box-shadow: 0 16px 36px #0006; }
+.services-dropdown { position: relative; }
+.services-trigger { display: flex; align-items: center; gap: 7px; background: none; border: 0; cursor: pointer; font-family: inherit; }
+.services-trigger svg { transition: transform 180ms ease; }
+.services-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+.services-trigger:focus-visible { outline: 2px solid #a3a3a3; outline-offset: 3px; }
+.services-dropdown-panel { position: absolute; top: calc(100% + 14px); left: 0; z-index: 100; width: 246px; padding: 7px; border: 1px solid #303030; border-radius: 16px; background: #171717; box-shadow: 0 16px 40px #0006; }
+.services-dropdown-panel a { display: block; padding: 12px 13px; border-radius: 9px; color: #c6c6c6; text-decoration: none; font-size: 13px; font-weight: 500; line-height: 20px; }
+.services-dropdown-panel a:hover, .services-dropdown-panel a:focus-visible, .services-dropdown-panel a[aria-current="page"] { background: #ffffff0d; color: #fff; }
+@media(max-width: 900px) {
+  .mobile-nav-panel .services-trigger { width: 100%; justify-content: space-between; }
+  .mobile-nav-panel .services-dropdown-panel { position: static; width: 100%; margin: 4px 0; box-shadow: none; background: #101010; }
+}
+@media(prefers-reduced-motion: reduce) { .services-trigger svg { transition: none; } }

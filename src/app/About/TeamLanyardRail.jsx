@@ -262,7 +262,7 @@ const BadgeFaces = React.memo(function BadgeFaces({ item, tone }) {
       {[0, 1].map((side) => (<span key={side} aria-hidden="true" className="absolute inset-y-[0.85em] block w-[2px]" style={{ [side ? "right" : "left"]: 0, transform: `translateX(${side ? 1 : -1}px) rotateY(90deg)`, background: "color-mix(in oklab, var(--color-foreground) 30%, var(--color-card))" }}/>))}
     </>);
 });
-export function TeamLanyardRail({ items, eyebrow, heading, caption, action, autoplay = false, interval = 2800, active: activeProp, onActiveChange, flipped: flippedProp, onFlippedChange, labels = DEFAULT_LABELS, className, ...rest }) {
+export function TeamLanyardRail({ items, eyebrow, heading, caption, action, compact = false, autoplay = false, interval = 2800, active: activeProp, onActiveChange, flipped: flippedProp, onFlippedChange, labels = DEFAULT_LABELS, className, ...rest }) {
     const uid = React.useId().replace(/[^a-zA-Z0-9_-]/g, "");
     const count = items.length;
     const stageRef = React.useRef(null);
@@ -332,7 +332,7 @@ export function TeamLanyardRail({ items, eyebrow, heading, caption, action, auto
             return;
         const measure = (width) => {
             const n = Math.max(1, live.current.count);
-            const railW = Math.min(MAX_W, (width - 40) / (n * RAIL_PITCH_MIN + 0.4));
+            const railW = Math.min(compact ? 112 : MAX_W, (width - 40) / (n * RAIL_PITCH_MIN + 0.4));
             const carousel = railW < MIN_RAIL_W;
             const W = Math.round((carousel ? clamp(width * 0.3, 96, 118) : railW) * 4) / 4;
             setSize((old) => (Math.abs(old.width - width) < 0.5 && old.carousel === carousel && old.W === W ? old : { width, W, carousel }));
@@ -1079,7 +1079,7 @@ export function TeamLanyardRail({ items, eyebrow, heading, caption, action, auto
           {items.map((item, i) => (<button key={item.id} type="button" aria-label={`${labels.show} ${item.name}`} aria-current={centerIndex === i} onClick={() => { stop(); setActive(i); }} className={`h-1.5 rounded-full outline-none transition-[width,background-color] duration-300 focus-visible:ring-2 focus-visible:ring-ring motion-reduce:transition-none ${centerIndex === i ? "w-6 bg-foreground" : "w-1.5 bg-foreground/25 hover:bg-foreground/45"}`}/>))}
         </div>)}
 
-      <div className="relative z-10 flex flex-col items-center gap-3 px-6 pb-7 pt-3 text-center">
+      <div className={compact ? "sr-only" : "relative z-10 flex flex-col items-center gap-3 px-6 pb-7 pt-3 text-center"}>
         <div id={`${uid}-caption`} aria-live="polite" className="min-h-[2.6rem]">
           <p className="text-sm font-medium">{line1}</p>
           <p className="mt-0.5 text-[13px] text-muted-foreground">{line2}</p>
