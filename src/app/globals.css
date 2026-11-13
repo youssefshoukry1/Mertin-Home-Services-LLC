@@ -118,3 +118,6 @@
 
 :root { background:#f7f7f5; color:#252525; --lanyard-background:#f7f7f5; --lanyard-foreground:#252525; --lanyard-muted:#ececea; --lanyard-muted-foreground:#686868; --lanyard-border:#dededb; }
 body { background:#f7f7f5; color:#252525; }
+html { scroll-behavior:smooth; }
+section[id] { scroll-margin-top:88px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } }

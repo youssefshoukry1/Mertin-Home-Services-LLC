@@ -40,6 +40,12 @@
 .cta:hover { background:#414141; }
 .cta:focus-visible { outline-color:#686868; }
 .frame { border-color:#dededb; background:#ececea; box-shadow:0 16px 50px #25252512; }
-.map { filter:none; color-scheme:light; }
+/* Crop Google's built-in place panel above the visible map frame. */
+.map { filter:none; color-scheme:light; width:calc(100% + 80px); max-width:none; height:calc(100% + 130px); margin-top:-130px; margin-left:-80px; }
 .globeBackground { background-image:none; }
 .locationDot { background:#686868; box-shadow:0 0 0 4px #2525250a; }
+.mapActivate { position:absolute; inset:0; z-index:2; border:0; background:transparent; cursor:pointer; }
+.mapActivate:focus-visible { outline:2px solid #686868; outline-offset:-5px; border-radius:28px; }
+.openMap { position:absolute; top:14px; left:14px; z-index:3; padding:10px 14px; border-radius:10px; background:#fff; color:#292929; box-shadow:0 2px 12px #0002; font-size:13px; font-weight:600; text-decoration:none; }
+.openMap:hover { background:#ececea; }
+.openMap:focus-visible { outline:2px solid #686868; outline-offset:3px; }

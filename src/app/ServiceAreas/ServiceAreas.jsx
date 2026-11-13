@@ -1,8 +1,12 @@
-﻿import styles from "./ServiceAreas.module.css";
+"use client";
+
+import { useState } from "react";
+import styles from "./ServiceAreas.module.css";
 
 import Globe from "./Globe";
 
 export default function ServiceAreas() {
+  const [mapSelected, setMapSelected] = useState(false);
   return (
     <section id="service-areas" className={styles.section} aria-labelledby="service-areas-title">
       <div className={styles.globeBackground} aria-hidden="true" />
@@ -17,6 +21,8 @@ export default function ServiceAreas() {
           <a href="/#contact" className={styles.cta}>Let&apos;s talk about your project</a>
         </header>
         <div className={styles.frame}>
+          {!mapSelected && <button type="button" className={styles.mapActivate} aria-label="Explore Cape Coral map" onClick={() => setMapSelected(true)} />}
+          {mapSelected && <a className={styles.openMap} href="https://www.google.com/maps/search/?api=1&query=Cape+Coral+Florida" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>}
           <iframe
             className={styles.map}
             title="Google Maps: Cape Coral, Florida service area"

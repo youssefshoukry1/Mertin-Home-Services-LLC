@@ -30,7 +30,7 @@ export default function ServiceHero({ serviceSlug = "handyman-services" }) {
         <span className={styles.badge}>Join over 100,000 happy creators</span>
         <h1 id="service-hero-title">Engage Audiences<br />with Stunning Videos</h1>
         <p>Boost Your Brand with High-Impact Short Videos from our expert<br className={styles.desktopBreak} /> content creators. Our team is ready to propel your business forward.</p>
-        <a className={styles.cta} href="/#contact">Get Started</a>
+        <a className={styles.cta} href="#contact">Get Started</a>
       </div>
       <div className={styles.gallery} aria-hidden="true">
         <div className={styles.track} style={{ animationPlayState: playing ? "running" : "paused" }}>

@@ -54,15 +54,16 @@ const links = [
 function NavigationLinks() {
   const pathname = usePathname();
   return links.map(([label, href]) => label === "Services" ? <ServicesDropdown key={href} /> : (
-    <Link key={href} href={href} className="nav-item" aria-current={href === pathname ? "page" : undefined}>
+    <Link key={href} href={label === "Contact" && pathname.startsWith("/services/") ? "#contact" : href} className="nav-item" aria-current={href === pathname ? "page" : undefined}>
       {label}
     </Link>
   ));
 }
 
 function RequestLink() {
+  const pathname = usePathname();
   return (
-    <Link href="/#contact" className="nav-request">
+    <Link href={pathname.startsWith("/services/") ? "#contact" : "/#contact"} className="nav-request">
       Request Service
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M7 17 17 7M7 7h10v10" />

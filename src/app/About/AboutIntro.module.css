@@ -34,3 +34,8 @@
 .collage img { border-color:#e3e3df; }
 .circle { background:#e1e3e1; }
 .square { background:#ddded9; }
+.eyebrow { display:block; margin-bottom:20px; color:#686868; font-size:12px; letter-spacing:2px; font-weight:600; }
+.actions { flex-wrap:wrap; }
+.actions a { padding:0 20px; }
+.stats { flex-wrap:wrap; gap:20px; }
+.stats strong { font-size:15px; line-height:22px; white-space:normal; }
