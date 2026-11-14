@@ -1,0 +1,28 @@
+.hero { min-height:calc(100svh - 88px); width:100%; background:#fafafa; color:#18181b; display:flex; flex-direction:column; overflow:hidden; }
+.content { flex:1; display:flex; flex-direction:column; align-items:center; padding:40px 16px 0; text-align:center; }
+.content h1 { font-size:60px; font-weight:700; max-width:672px; line-height:1.25; letter-spacing:-.025em; margin:0; }
+.content h1 em { color:#3f3f46; font-weight:700; font-style:italic; }
+.content > p { margin:20px 0 0; font-size:16px; color:#71717a; max-width:384px; line-height:1.625; }
+.action { margin-top:32px; }
+.button { display:inline-flex; align-items:center; gap:10px; padding:12px 22px; border-radius:999px; background:#18181b; color:#fff; font-size:14px; font-weight:600; text-decoration:none; box-shadow:inset 0 1px 0 #ffffff26,0 3px 8px #0001; transition:background 180ms; }
+.button:hover { background:#3f3f46; }
+.button:focus-visible { outline:2px solid #71717a; outline-offset:4px; }
+.orb { width:16px; height:16px; border-radius:50%; background:radial-gradient(circle at 30% 25%,#fff,#d4d4d8 35%,#71717a 70%,#3f3f46); }
+.cards { position:relative; margin-top:40px; display:flex; align-items:flex-end; justify-content:center; height:380px; width:100%; }
+.cardPosition { position:absolute; bottom:0; transform-origin:bottom; }
+.card { width:224px; height:320px; overflow:hidden; border-radius:16px; box-shadow:0 20px 25px -5px #0002,0 8px 10px -6px #0002; outline:2px solid #ffffff99; background:#fff; }
+.card img { display:block; width:100%; height:100%; object-fit:cover; }
+.hero { min-height:0; }
+.content { padding:clamp(20px,4svh,40px) 16px 28px; }
+.content h1 { font-size:clamp(32px,5.8svh,60px); line-height:1.15; max-width:800px; }
+.content > p { max-width:520px; margin-top:16px; }
+.cards { --card-height:clamp(180px,38svh,320px); --card-step:calc(var(--card-height) * .375); height:calc(var(--card-height) * 1.27 + 24px); margin-top:24px; flex-shrink:0; }
+.cardPosition { bottom:calc(var(--card-height) * .14 + 16px); }
+.card { height:var(--card-height); width:calc(var(--card-height) * .7); }
+@media(max-width:767px) {
+ .content { padding-top:20px; padding-bottom:16px; }
+ .content h1 { font-size:clamp(28px,7vw,40px); }
+ .content > p { font-size:14px; max-width:400px; }
+ .cards { --card-height:min(32svh,34vw); --card-step:calc(var(--card-height) * .375); margin-top:28px; }
+ .card { border-radius:12px; }
+}

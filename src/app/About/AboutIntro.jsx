@@ -1,14 +1,18 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import { MapPin, Wrench, Heart } from "lucide-react";
 import styles from "./AboutIntro.module.css";
 
 export default function AboutIntro() {
+  const reduced = useReducedMotion();
   return (
-    <section id="about" className={styles.section} aria-labelledby="about-title">
+    <motion.section id="about" className={styles.section} aria-labelledby="about-title" initial={reduced ? false : { opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: reduced ? 0 : 0.8, ease: "easeOut" }}>
       <div className={styles.inner}>
         <div className={styles.copy}>
           <span className={styles.eyebrow}>ABOUT MERTIN</span>
           <h2 id="about-title">Your home deserves<br />a helping hand.</h2>
-          <p>Mertin Home Services LLC helps homeowners in Cape Coral and surrounding areas with repairs, cleaning, assembly, and home improvements. Tell us what needs attention, and we?ll help you take the next step.</p>
+          <p>Mertin Home Services LLC helps homeowners in Cape Coral and surrounding areas with repairs, cleaning, assembly, and home improvements. Tell us what needs attention, and we&apos;ll help you take the next step.</p>
           <div className={styles.actions}>
             <a href="#contact">Tell us about your project</a>
             <a href="#services">Explore our services</a>
@@ -27,6 +31,6 @@ export default function AboutIntro() {
           <span className={styles.square} aria-hidden="true" />
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

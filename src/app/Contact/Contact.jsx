@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import Globe from "../ServiceAreas/Globe";
 import styles from "./Contact.module.css";
 
 const services = [
@@ -14,6 +13,11 @@ const services = [
 
 export default function Contact({ defaultService = "" }) {
   const [files, setFiles] = useState([]);
+  const [celebrating, setCelebrating] = useState(false);
+  const celebrationTimer = useRef(null);
+  useEffect(() => () => clearTimeout(celebrationTimer.current), []);
+  useEffect(() => { const image = new Image(); image.src = "/images/contact-worker-celebrate.webp"; }, []);
+  function celebrate() { clearTimeout(celebrationTimer.current); setCelebrating(true); celebrationTimer.current = setTimeout(() => setCelebrating(false), 2000); }
   const [notice, setNotice] = useState("");
   function attach(event) {
     const selected = Array.from(event.target.files || []);
@@ -43,22 +47,24 @@ export default function Contact({ defaultService = "" }) {
               <li><span aria-hidden="true">⌂</span>Home repairs, cleaning &amp; installation</li>
               <li><span aria-hidden="true">▧</span>Share photos of your project</li>
             </ul>
-            <div className={styles.globe}><Globe textureSrc="/images/globe-outline.png" /></div>
           </div>
-          <form className={styles.form} onSubmit={event => { event.preventDefault(); if (!new FormData(event.currentTarget).get("service")) { setNotice("Please choose a service."); event.currentTarget.querySelector('[role="combobox"]')?.focus(); return; } setNotice("Online requests aren’t available yet. Your message has not been sent."); }}>
+          <form className={styles.form} onSubmit={event => { event.preventDefault(); if (!new FormData(event.currentTarget).get("service")) { setNotice("Please choose a service."); event.currentTarget.querySelector('[role="combobox"]')?.focus(); return; } celebrate(); setNotice("Online requests aren’t available yet. Your message has not been sent."); }}>
             <div className={styles.formHeader}><h3>Send a message</h3><p>Tell us a little about your project.</p></div>
             <div className={styles.row}>
               <label>Full name<input name="name" autoComplete="name" placeholder="Your name" required /></label>
-              <label>Company<input name="company" autoComplete="organization" placeholder="Company (optional)" /></label>
             </div>
             <label>Email address<input name="email" type="email" autoComplete="email" placeholder="you@example.com" required /></label>
             <div className={styles.row}>
               <label>Phone number<input name="phone" type="tel" autoComplete="tel" placeholder="Your phone number" /></label>
               <ServicePicker key={defaultService} defaultService={defaultService} />
             </div>
-            <label>Message<textarea name="message" placeholder="Type your message here..." rows={5} required /></label>
+            <label className={styles.message}>Message<textarea name="message" placeholder="Type your message here..." rows={3} required /></label>
             <label className={styles.upload}>Project photos <span>(optional)</span><input type="file" name="photos" accept="image/*" multiple onChange={attach} /><small>{files.length ? `${files.length} photo${files.length === 1 ? "" : "s"} selected` : "Up to 5 photos · 10 MB each"}</small></label>
-            <button className={styles.submit} type="submit">Submit</button>
+            <div className={styles.submitGroup} data-celebrating={celebrating}>
+              {celebrating && <div className={styles.confetti} aria-hidden="true">{Array.from({length:18},(_,i)=><i key={i} style={{"--x":`${(i%6)*42-105}px`,"--y":`${-35-(i%4)*24}px`,"--r":`${i*57}deg`,"--delay":`${(i%3)*65}ms`,background:["#789480","#c4a45b","#8296ad"][i%3]}} />)}</div>}
+              <img className={styles.worker} src={celebrating ? "/images/contact-worker-celebrate.webp" : "/images/contact-worker.webp"} alt="" aria-hidden="true" width="160" height="240" loading="lazy" decoding="async" />
+              <button className={styles.submit} type="submit">Submit</button>
+            </div>
             {notice && <p className={styles.notice} role="status">{notice}</p>}
           </form>
         </div>

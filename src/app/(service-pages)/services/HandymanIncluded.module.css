@@ -8,6 +8,16 @@
 .grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; }
 .card { padding:28px 24px; border-radius:20px; background:#ececea; }
 .icon { display:flex; align-items:center; height:32px; color:#4b4e49; margin-bottom:28px; }
+.icon { perspective:600px; }
+.icon svg { transform-origin:center; }
+@media(hover:hover) and (pointer:fine) {
+ .card:hover .icon svg { animation:includedIconFlip 700ms ease-in-out; }
+}
+@keyframes includedIconFlip {
+ from { transform:rotateY(0deg); }
+ to { transform:rotateY(360deg); }
+}
+@media(prefers-reduced-motion:reduce) { .card:hover .icon svg { animation:none; } }
 .card h3 { font-size:18px; font-weight:600; letter-spacing:-.02em; margin:0 0 12px; }
 .card p { font-size:14px; }
 .footer { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-top:28px; padding:22px 0 0; border-top:1px solid #dededb; }

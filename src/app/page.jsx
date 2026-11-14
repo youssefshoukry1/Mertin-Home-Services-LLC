@@ -1,4 +1,4 @@
-import EdgeBannerCard from "./Hero/EdgeBannerCard";
+import ServiceHero from "./(service-pages)/services/ServiceHero";
 import Contact from "./Contact/Contact";
 import Navbar from "./Navbar/Navbar";
 import Services from "./Services/Services";
@@ -11,7 +11,7 @@ export default function Home() {
     <main>
       <div className="hero-light">
         <Navbar />
-        <EdgeBannerCard />
+        <ServiceHero homepage />
       </div>
       <Services />
       <AboutIntro />

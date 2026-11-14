@@ -46,7 +46,6 @@ function ServicesDropdown() {
 const links = [
   ["Home", "/"],
   ["Services", "/services"],
-  ["About Us", "/about"],
   ["Service Areas", "/service-areas"],
   ["Contact", "/#contact"],
 ];

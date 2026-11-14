@@ -3,9 +3,18 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./ServiceHero.module.css";
 
-export default function ServiceHero({ serviceSlug = "handyman-services" }) {
+export default function ServiceHero({ serviceSlug = "handyman-services", homepage = false }) {
   const sourceName = serviceSlug === "home-repairs" ? "home%20repairs" : serviceSlug;
-  const images = [
+  const images = homepage ? [
+    "/services%20images/handyman-services.webp",
+    "/images/service-hero/cleaning-services-1.webp",
+    "/services%20images/assembly-installation.webp",
+    "/images/service-hero/home-renovation-2.webp",
+    "/services%20images/home%20repairs.webp",
+    "/images/service-hero/assembly-installation-2.webp",
+    "/images/about/cleaning.webp",
+    "/images/service-hero/home-renovation-1.webp",
+  ] : [
     `/services%20images/${sourceName}.webp`,
     `/images/service-hero/${serviceSlug}-1.webp`,
     `/images/service-hero/${serviceSlug}-2.webp`,
@@ -27,10 +36,10 @@ export default function ServiceHero({ serviceSlug = "handyman-services" }) {
   return (
     <section ref={section} className={styles.hero} aria-labelledby="service-hero-title">
       <div className={styles.content}>
-        <span className={styles.badge}>Join over 100,000 happy creators</span>
-        <h1 id="service-hero-title">Engage Audiences<br />with Stunning Videos</h1>
-        <p>Boost Your Brand with High-Impact Short Videos from our expert<br className={styles.desktopBreak} /> content creators. Our team is ready to propel your business forward.</p>
-        <a className={styles.cta} href="#contact">Get Started</a>
+        <span className={styles.badge}>{homepage ? "Serving Cape Coral & surrounding areas" : "Join over 100,000 happy creators"}</span>
+        <h1 id="service-hero-title">{homepage ? <>A little help.<br />A better home.</> : <>Engage Audiences<br />with Stunning Videos</>}</h1>
+        <p>{homepage ? <>From everyday repairs and cleaning to assembly and home improvements,<br className={styles.desktopBreak} /> Mertin Home Services LLC helps you care for the place you call home.</> : <>Boost Your Brand with High-Impact Short Videos from our expert<br className={styles.desktopBreak} /> content creators. Our team is ready to propel your business forward.</>}</p>
+        <a className={styles.cta} href="#contact">{homepage ? "Tell us what you need" : "Get Started"}</a>
       </div>
       <div className={styles.gallery} aria-hidden="true">
         <div className={styles.track} style={{ animationPlayState: playing ? "running" : "paused" }}>
