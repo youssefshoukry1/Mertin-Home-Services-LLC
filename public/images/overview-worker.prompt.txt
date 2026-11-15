@@ -1,0 +1,5 @@
+Tool: built-in image_gen
+Reference: public/services images/cleaning-services.webp
+Output: public/images/overview-worker.webp
+
+Create a photorealistic website cutout using the attached local image as the woman's identity reference. Preserve her face, blonde hair, age and natural appearance. Full body seated on floor in a relaxed professional pose, one knee raised and other leg folded, forearm resting on raised knee, looking slightly to her left with a calm subtle expression. Charcoal polo shirt, navy work trousers, clean black work shoes matching the reference home-service uniform. A small folded blue microfiber cloth in one hand. Entire head, arms, legs and shoes visible with generous narrow transparent padding. Natural studio daylight, realistic skin and fabric texture. Isolated on genuinely transparent background. No text, no furniture, no surrounding room, no logos. Portrait composition suitable for the left half of a website feature card.

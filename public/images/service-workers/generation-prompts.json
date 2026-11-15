@@ -1,0 +1,25 @@
+{
+  "tool": "built-in image_gen",
+  "images": [
+    {
+      "file": "handyman-services.webp",
+      "prompt": "Photorealistic professional website hero cutout. Use the provided photo as identity and uniform reference. The brown-haired bearded male handyman from the reference, navy polo and gray work trousers, standing with a tool belt, left hand gesturing toward the left side of the frame, right hand holding a screwdriver down safely. Preserve exact recognizable face, hair, build and clothing colors. Relaxed confident natural expression, subtle closed-mouth smile. Full body including shoes and all props, generous padding around silhouette. Subject and props compactly composed for right side of banner, facing slightly left. Soft natural studio daylight, authentic skin texture and fabric detail. Genuinely transparent background, no room, no text, no logos, no backdrop. Portrait 3:4 composition."
+    },
+    {
+      "file": "home-repairs.webp",
+      "prompt": "Photorealistic professional website hero cutout. Use the provided photo as identity and uniform reference. The straight brown-haired bearded man in the reference, charcoal polo and navy trousers, standing beside a small white cabinet, one hand resting on its top, the other gesturing to the left. Preserve exact recognizable face, hair, build and clothing colors. Relaxed confident natural expression, subtle closed-mouth smile. Full body including shoes and all props, generous padding around silhouette. Subject and props compactly composed for right side of banner, facing slightly left. Soft natural studio daylight, authentic skin texture and fabric detail. Genuinely transparent background, no room, no text, no logos, no backdrop. Portrait 3:4 composition."
+    },
+    {
+      "file": "assembly-installation.webp",
+      "prompt": "Photorealistic professional website hero cutout. Use the provided photo as identity and uniform reference. The blonde male worker with black rectangular glasses from the reference, navy polo and gray trousers, standing next to a small assembled light oak shelving unit, one arm resting on it, other hand holding a cordless drill down safely. Preserve exact recognizable face, hair, build and clothing colors. Relaxed confident natural expression, subtle closed-mouth smile. Full body including shoes and all props, generous padding around silhouette. Subject and props compactly composed for right side of banner, facing slightly left. Soft natural studio daylight, authentic skin texture and fabric detail. Genuinely transparent background, no room, no text, no logos, no backdrop. Portrait 3:4 composition."
+    },
+    {
+      "file": "cleaning-services.webp",
+      "prompt": "Photorealistic professional website hero cutout. Use the provided photo as identity and uniform reference. The blonde woman from the reference, charcoal polo and navy work trousers, standing with one hand holding a blue microfiber cloth and the other pointing toward the left. A small cleaning caddy at her feet. Preserve exact recognizable face, hair, build and clothing colors. Relaxed confident natural expression, subtle closed-mouth smile. Full body including shoes and all props, generous padding around silhouette. Subject and props compactly composed for right side of banner, facing slightly left. Soft natural studio daylight, authentic skin texture and fabric detail. Genuinely transparent background, no room, no text, no logos, no backdrop. Portrait 3:4 composition."
+    },
+    {
+      "file": "home-renovation.webp",
+      "prompt": "Photorealistic professional website hero cutout. Use the provided photo as identity and uniform reference. Only the curly dark-haired male painter from the reference, charcoal polo and beige work trousers, standing holding a paint roller upright and resting the other hand on a small stepladder, paint bucket by his feet. Preserve exact recognizable face, hair, build and clothing colors. Relaxed confident natural expression, subtle closed-mouth smile. Full body including shoes and all props, generous padding around silhouette. Subject and props compactly composed for right side of banner, facing slightly left. Soft natural studio daylight, authentic skin texture and fabric detail. Genuinely transparent background, no room, no text, no logos, no backdrop. Portrait 3:4 composition."
+    }
+  ]
+}
