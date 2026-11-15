@@ -3,7 +3,9 @@ import Contact from "./Contact/Contact";
 import Navbar from "./Navbar/Navbar";
 import Services from "./Services/Services";
 import ServiceOverview from "./Services/ServiceOverview";
-import AboutIntro from "./About/AboutIntro";
+import ProjectPlanner from "./Services/ProjectPlanner";
+import HomeCare from "./Services/HomeCare";
+import HomeSupport from "./Services/HomeSupport";
 import About from "./About/About";
 import ServiceAreas from "./ServiceAreas/ServiceAreas";
 
@@ -16,8 +18,10 @@ export default function Home() {
       </div>
       <ServiceOverview />
       <Services />
-      <AboutIntro />
+      <HomeCare />
+      <HomeSupport />
       <About />
+      <ProjectPlanner />
       <ServiceAreas />
       <Contact />
     </main>

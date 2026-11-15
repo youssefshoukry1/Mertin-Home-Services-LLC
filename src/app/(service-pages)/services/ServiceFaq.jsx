@@ -121,7 +121,7 @@ export default function ServiceFaq({ serviceSlug = "handyman-services" }) {
   const [open, setOpen] = useState(4);
   const id = useId();
   return (
-    <section className={styles.section} aria-labelledby={`${id}-title`}>
+    <section data-motion-section className={styles.section} aria-labelledby={`${id}-title`}>
       <div className={styles.panel}>
         <div className={styles.intro}>
           <span className={styles.eyebrow}>FAQ</span>

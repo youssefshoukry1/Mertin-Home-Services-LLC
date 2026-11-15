@@ -105,7 +105,7 @@ export function Reveal2({ badge, heading, description, highlights = [], beforeIm
             document.removeEventListener("touchend", handleEnd);
         };
     }, [isDragging, handleMove]);
-    return (<section className={cn(styles.comparison, "py-16 md:py-24 w-full", className)}>
+    return (<section data-motion-section className={cn(styles.comparison, "py-16 md:py-24 w-full", className)}>
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-center">
           {/* Content */}

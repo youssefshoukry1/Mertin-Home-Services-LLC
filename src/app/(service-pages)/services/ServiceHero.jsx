@@ -1,57 +1,26 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
 import styles from "./ServiceHero.module.css";
 
-export default function ServiceHero({ serviceSlug = "handyman-services", homepage = false }) {
-  const sourceName = serviceSlug === "home-repairs" ? "home%20repairs" : serviceSlug;
-  const images = homepage ? [
-    "/services%20images/handyman-services.webp",
-    "/images/service-hero/cleaning-services-1.webp",
-    "/services%20images/assembly-installation.webp",
-    "/images/service-hero/home-renovation-2.webp",
-    "/services%20images/home%20repairs.webp",
-    "/images/service-hero/assembly-installation-2.webp",
-    "/images/about/cleaning.webp",
-    "/images/service-hero/home-renovation-1.webp",
-  ] : [
-    `/services%20images/${sourceName}.webp`,
-    `/images/service-hero/${serviceSlug}-1.webp`,
-    `/images/service-hero/${serviceSlug}-2.webp`,
-    `/images/services/${serviceSlug}-back.webp`,
-    `/images/service-hero/${serviceSlug}-4.webp`,
-    `/images/service-hero/${serviceSlug}-3.webp`,
-  ];
-  const section = useRef(null);
-  const [playing, setPlaying] = useState(false);
-  useEffect(() => {
-    let visible = false;
-    const update = () => setPlaying(visible && !document.hidden);
-    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; update(); });
-    observer.observe(section.current);
-    document.addEventListener("visibilitychange", update);
-    return () => { observer.disconnect(); document.removeEventListener("visibilitychange", update); };
-  }, []);
-
+export default function ServiceHero() {
   return (
-    <section ref={section} className={styles.hero} aria-labelledby="service-hero-title">
-      <div className={styles.content}>
-        <span className={styles.badge}>{homepage ? "Serving Cape Coral & surrounding areas" : "Join over 100,000 happy creators"}</span>
-        <h1 id="service-hero-title">{homepage ? <>A little help.<br />A better home.</> : <>Engage Audiences<br />with Stunning Videos</>}</h1>
-        <p>{homepage ? <>From everyday repairs and cleaning to assembly and home improvements,<br className={styles.desktopBreak} /> Mertin Home Services LLC helps you care for the place you call home.</> : <>Boost Your Brand with High-Impact Short Videos from our expert<br className={styles.desktopBreak} /> content creators. Our team is ready to propel your business forward.</>}</p>
-        <a className={styles.cta} href="#contact">{homepage ? "Tell us what you need" : "Get Started"}</a>
-      </div>
-      <div className={styles.gallery} aria-hidden="true">
-        <div className={styles.track} style={{ animationPlayState: playing ? "running" : "paused" }}>
-          {[0, 1, 2].map((copy) => (
-            <div className={styles.group} key={copy}>
-              {images.map((src, index) => (
-                <div className={styles.imageCard} key={src} style={{ "--tilt": `${[-7, 5, -4, 5, -6, 4, -5, 6][index]}deg` }}>
-                  <img src={src} alt="" width="480" height="640" decoding="async" draggable={false} />
-                </div>
-              ))}
-            </div>
-          ))}
+    <section data-motion-section className={styles.hero} aria-labelledby="service-hero-title">
+      <svg className={styles.lines} viewBox="0 0 600 800" fill="none" aria-hidden="true">
+        <path d="M440-40v130q0 20-20 20h-80q-20 0-20 20v80q0 20-20 20h-80q-20 0-20 20v80q0 20-20 20h-80q-20 0-20 20v80q0 20-20 20H0M560-40v130q0 20-20 20h-80q-20 0-20 20v80q0 20-20 20h-80q-20 0-20 20v80q0 20-20 20h-80q-20 0-20 20v80q0 20-20 20h-80q-20 0-20 20v80q0 20-20 20H0M440 230v220q0 20-20 20h-80q-20 0-20 20v80q0 20-20 20h-80q-20 0-20 20v80q0 20-20 20h-80q-20 0-20 20v80" />
+      </svg>
+      <div className={styles.inner}>
+        <div className={styles.content}>
+          <span className={styles.badge}>A helping hand for your home</span>
+          <h1 id="service-hero-title">Home services in<br /><span>Cape Coral &amp; beyond.</span></h1>
+          <p>From everyday repairs and cleaning to assembly and home improvements, Mertin Home Services LLC helps you care for the place you call home.</p>
+          <div className={styles.coverage}><strong>Local home care:</strong> Cape Coral, Florida &amp; surrounding areas</div>
+          <div className={styles.actions}>
+            <a data-motion-cta className={styles.primary} href="#contact">Tell us what you need <span aria-hidden="true">&#8599;</span></a>
+            <a data-motion-cta className={styles.secondary} href="#planner">Estimate your project</a>
+          </div>
+          <span className={styles.note}>Repairs &middot; Cleaning &middot; Assembly &middot; Home improvements</span>
+        </div>
+        <div data-motion-item className={styles.visual}>
+          <div className={styles.circle} aria-hidden="true" />
+          <img src="/images/hero-home-care-duo-tools.webp" alt="A woman holding cleaning spray beside a seated repair worker holding a screwdriver" width="1200" height="1200" fetchPriority="high" />
         </div>
       </div>
     </section>

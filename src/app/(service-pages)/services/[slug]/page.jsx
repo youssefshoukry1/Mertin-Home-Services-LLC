@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import Navbar from "../../../Navbar/Navbar";
 import ServiceCardsHero from "../ServiceCardsHero";
+import ServiceProcess from "../ServiceProcess";
 import HandymanIncluded from "../HandymanIncluded";
+import AboutIntro from "../../../About/AboutIntro";
 import About from "../../../About/About";
 import ServiceFaq from "../ServiceFaq";
 import BeforeAfter from "../BeforeAfter";
@@ -32,6 +34,8 @@ export default async function ServicePage({ params }) {
       <Navbar />
       <ServiceCardsHero serviceSlug={slug} />
       <HandymanIncluded serviceSlug={slug} />
+      <ServiceProcess serviceSlug={slug} />
+      <AboutIntro serviceSlug={slug} />
       <About />
       <BeforeAfter serviceSlug={slug} />
       <ServiceFaq serviceSlug={slug} />

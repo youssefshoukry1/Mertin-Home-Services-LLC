@@ -1,49 +1,55 @@
-﻿import Link from "next/link";
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ArrowUpRight, MapPin, MessageSquare } from "lucide-react";
 import styles from "./Footer.module.css";
 
-const groups = [
-  { title: "Services", links: [
-    ["Handyman Services", "/services/handyman-services"],
-    ["Home Repairs", "/services/home-repairs"],
-    ["Assembly & Installation", "/services/assembly-installation"],
-    ["Cleaning Services", "/services/cleaning-services"],
-    ["Home Renovation", "/services/home-renovation"],
-    ["View all services", "/#services"],
-  ] },
-  { title: "Explore", links: [
-    ["Home", "/"], ["About Mertin", "/#about"],
-    ["Service Areas", "/#service-areas"], ["Request Service", "/#contact"],
-  ] },
-  { title: "Company", links: [
-    ["Contact", "/#contact"], ["Privacy Policy", "/privacy-policy"],
-    ["Terms of Use", "/terms-of-use"], ["Accessibility", "/accessibility"],
-  ] },
+const services = [
+ ["Handyman Services", "handyman-services"],
+ ["Home Repairs", "home-repairs"],
+ ["Assembly & Installation", "assembly-installation"],
+ ["Cleaning Services", "cleaning-services"],
+ ["Home Renovation", "home-renovation"],
 ];
 
 export default function Footer() {
-  return (
-    <footer className={styles.footer}>
-      <div className={styles.panel}>
-        <div className={styles.columns}>
-          <div className={styles.intro}>
-            <Link href="/" className={styles.brand} aria-label="Mertin Home Services LLC home">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11 12 3l9 8v10h-6v-7H9v7H3V11Z" fill="currentColor" /></svg>
-              <span>Mertin<span className={styles.brandSub}>HOME SERVICES LLC</span></span>
-            </Link>
-            <p>Care for the place you call home. Home repairs, cleaning, installation, and renovation in Cape Coral and surrounding areas.</p>
-          </div>
-          {groups.map(group => (
-            <nav key={group.title} aria-label={`Footer ${group.title}`} className={styles.group}>
-              <h2>{group.title}</h2>
-              <ul>{group.links.map(([label, href]) => <li key={label}><Link href={href} prefetch={false}>{label}</Link></li>)}</ul>
-            </nav>
-          ))}
-        </div>
-        <div className={styles.bottom}>
-          <p>&copy; {new Date().getFullYear()} Mertin Home Services LLC. All rights reserved.</p>
-          <nav aria-label="Legal"><Link href="/terms-of-use" prefetch={false}>Terms</Link><Link href="/privacy-policy" prefetch={false}>Privacy</Link><Link href="/accessibility" prefetch={false}>Accessibility</Link></nav>
-        </div>
-      </div>
-    </footer>
-  );
+ const pathname = usePathname();
+ const contact = pathname === "/" || pathname.startsWith("/services/") ? "#contact" : "/#contact";
+ return (
+  <footer className={styles.footer}>
+   <div data-motion-section className={styles.banner}>
+    <img src="/images/service-hero/home-renovation-2.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+    <div className={styles.bannerContent}>
+     <h2>Let&apos;s talk about<br />your home project.</h2>
+     <Link href={contact} data-motion-cta className={styles.button}>Request service <ArrowUpRight size={18} aria-hidden="true" /></Link>
+    </div>
+   </div>
+   <div className={styles.panel}>
+    <div data-motion-section className={styles.columns}>
+     <div data-motion-item className={styles.intro}>
+      <Link href="/" className={styles.brand} aria-label="Mertin Home Services LLC home">Mertin.<span>HOME SERVICES LLC</span></Link>
+      <p>Practical help with repairs, cleaning, assembly, and improvements. Care for the place you call home.</p>
+      <span className={styles.area}>Cape Coral &amp; surrounding areas</span>
+     </div>
+     <nav data-motion-item className={styles.group} aria-label="Footer services">
+      <h2>Our services</h2>
+      <ul>{services.map(([label,slug])=><li key={slug}><Link href={`/services/${slug}`}>{label}<ArrowUpRight size={13} aria-hidden="true" /></Link></li>)}</ul>
+     </nav>
+     <nav data-motion-item className={styles.group} aria-label="Footer explore">
+      <h2>Explore</h2>
+      <ul>{[["Home","/"],["All services","/#services"],["Service areas","/#service-areas"],["Plan your project","/#planner"]].map(([label,href])=><li key={href}><Link href={href}>{label}<ArrowUpRight size={13} aria-hidden="true" /></Link></li>)}</ul>
+     </nav>
+     <div data-motion-item className={styles.contact}>
+      <h2>Let&apos;s get started</h2>
+      <Link href={contact}><MessageSquare size={19} aria-hidden="true" /><span>Tell us what you need<small>Share your project details and photos.</small></span></Link>
+      <p><MapPin size={19} aria-hidden="true" /><span>Cape Coral, Florida<br />&amp; surrounding areas</span></p>
+     </div>
+    </div>
+    <div data-motion-section className={styles.bottom}>
+     <p>&copy; {new Date().getFullYear()} Mertin Home Services LLC. All rights reserved.</p>
+     <nav aria-label="Legal"><Link href="/terms-of-use">Terms of Use</Link><Link href="/privacy-policy">Privacy Policy</Link><Link href="/accessibility">Accessibility</Link></nav>
+    </div>
+   </div>
+  </footer>
+ );
 }

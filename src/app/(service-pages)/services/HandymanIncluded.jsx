@@ -39,16 +39,16 @@ const serviceDetails = {
 export default function HandymanIncluded({ serviceSlug = "handyman-services" }) {
   const details = serviceDetails[serviceSlug] || serviceDetails["handyman-services"];
   return (
-    <section className={styles.section} aria-labelledby="handyman-included-title">
+    <section data-motion-section id="service-included" className={styles.section} aria-labelledby="handyman-included-title">
       <div className={styles.inner}>
-        <header className={styles.heading}>
+        <header data-motion-group className={styles.heading}>
           <span className={styles.eyebrow}>WHAT’S INCLUDED</span>
           <h2 id="handyman-included-title">{details.heading}</h2>
           <p>Explore a few everyday tasks you can ask us about. Share the details and photos so we can confirm how we can help.</p>
         </header>
         <div className={styles.grid}>
           {details.tasks.map(({ icon: Icon, title, description }) => (
-            <article key={title} className={styles.card}>
+            <article key={title} data-motion-item data-motion-card className={styles.card}>
               <span className={styles.icon}><Icon size={23} strokeWidth={1.5} aria-hidden="true" /></span>
               <h3>{title}</h3>
               <p>{description}</p>
@@ -57,7 +57,7 @@ export default function HandymanIncluded({ serviceSlug = "handyman-services" }) 
         </div>
         <div className={styles.footer}>
           <p>Have something else in mind?</p>
-          <a href="#contact">Discuss your project <span className={styles.buttonArrow}><ArrowUpRight size={18} strokeWidth={1.75} aria-hidden="true" /></span></a>
+          <a data-motion-cta href="#contact">Discuss your project <span className={styles.buttonArrow}><ArrowUpRight size={18} strokeWidth={1.75} aria-hidden="true" /></span></a>
         </div>
       </div>
     </section>

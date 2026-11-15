@@ -107,4 +107,4 @@ const reviews = [
     "tags": []
   }
 ];
-export default function ReviewCards() { return <div className="about-mertin about-compact w-full bg-background text-foreground"><p className="review-demo-label">Sample reviews ? For design preview only</p><TeamLanyardRail items={reviews} autoplay={false} compact /></div>; }
+export default function ReviewCards() { return <div data-motion-section className="about-mertin about-compact w-full bg-background text-foreground"><p className="review-demo-label">Sample reviews ? For design preview only</p><TeamLanyardRail items={reviews} autoplay={false} compact /></div>; }

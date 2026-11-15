@@ -8,7 +8,7 @@ import Globe from "./Globe";
 export default function ServiceAreas() {
   const [mapSelected, setMapSelected] = useState(false);
   return (
-    <section id="service-areas" className={styles.section} aria-labelledby="service-areas-title">
+    <section data-motion-section id="service-areas" className={styles.section} aria-labelledby="service-areas-title">
       <div className={styles.globeBackground} aria-hidden="true" />
       <Globe />
       <p className={styles.globeHint}><span className={styles.locationDot} aria-hidden="true" />Cape Coral, Florida · Drag to explore</p>
@@ -18,7 +18,7 @@ export default function ServiceAreas() {
           <h2 id="service-areas-title">A little help.<br />A better home.</h2>
           <span>From the small fixes on your list to a fresh start for your space, Mertin Home Services LLC helps you take care of the place you call home.</span>
           <p className={styles.coverage}>Serving Cape Coral, Florida, and surrounding areas. Tell us where you are and what your home needs.</p>
-          <a href="/#contact" className={styles.cta}>Let&apos;s talk about your project</a>
+          <a href="/#contact" data-motion-cta className={styles.cta}>Let&apos;s talk about your project</a>
         </header>
         <div className={styles.frame}>
           {!mapSelected && <button type="button" className={styles.mapActivate} aria-label="Explore Cape Coral map" onClick={() => setMapSelected(true)} />}

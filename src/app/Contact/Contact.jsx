@@ -13,6 +13,24 @@ const services = [
 
 export default function Contact({ defaultService = "" }) {
   const [files, setFiles] = useState([]);
+  const [requestedService, setRequestedService] = useState(defaultService);
+  const [message, setMessage] = useState("");
+  const previousPlan = useRef("");
+  useEffect(() => {
+    const receive = (event) => {
+      const plan = event.detail;
+      if (!services.some(([slug]) => slug === plan?.service) || typeof plan.message !== "string") return;
+      setRequestedService(plan.service);
+      const oldPlan = previousPlan.current;
+      previousPlan.current = plan.message;
+      setMessage(current => {
+        const existing = oldPlan ? current.replace(oldPlan, "").trim() : current.trim();
+        return [existing, plan.message].filter(Boolean).join("\n\n");
+      });
+    };
+    window.addEventListener("mertin-project-request", receive);
+    return () => window.removeEventListener("mertin-project-request", receive);
+  }, []);
   const [celebrating, setCelebrating] = useState(false);
   const celebrationTimer = useRef(null);
   useEffect(() => () => clearTimeout(celebrationTimer.current), []);
@@ -31,42 +49,42 @@ export default function Contact({ defaultService = "" }) {
     setNotice("");
   }
   return (
-    <section id="contact" className={styles.section} aria-labelledby="contact-title">
+    <section data-motion-section id="contact" className={styles.section} aria-labelledby="contact-title">
       <div className={styles.container}>
-        <header className={styles.heading}>
+        <header data-motion-group className={styles.heading}>
           <span className={styles.badge}>Contact</span>
-          <h2 id="contact-title">Contact us</h2>
-          <p>A repair, a refresh, or a helping hand around the house.<br />Tell us what you need and let&apos;s talk about your project.</p>
+          <h2 id="contact-title">Tell us about <em>your home project.</em></h2>
+          <p>Which service do you need, and what needs attention?<br />Share a few details to help us understand your project.</p>
         </header>
         <div className={styles.columns}>
-          <div className={styles.details}>
-            <h3>Get in touch</h3>
-            <p>Tell us about your home and the work you have in mind.</p>
-            <ul className={styles.info}>
-              <li><span aria-hidden="true">⌖</span>Cape Coral, Florida &amp; surrounding areas</li>
-              <li><span aria-hidden="true">⌂</span>Home repairs, cleaning &amp; installation</li>
-              <li><span aria-hidden="true">▧</span>Share photos of your project</li>
-            </ul>
-          </div>
-          <form className={styles.form} onSubmit={event => { event.preventDefault(); if (!new FormData(event.currentTarget).get("service")) { setNotice("Please choose a service."); event.currentTarget.querySelector('[role="combobox"]')?.focus(); return; } celebrate(); setNotice("Online requests aren’t available yet. Your message has not been sent."); }}>
-            <div className={styles.formHeader}><h3>Send a message</h3><p>Tell us a little about your project.</p></div>
+          <form data-motion-item className={styles.form} onSubmit={event => { event.preventDefault(); if (!new FormData(event.currentTarget).get("service")) { setNotice("Please choose a service."); event.currentTarget.querySelector('[role="combobox"]')?.focus(); return; } celebrate(); setNotice("Online requests are not available yet. Your message has not been sent."); }}>
+            <p className={styles.required}>* Required fields</p>
             <div className={styles.row}>
-              <label>Full name<input name="name" autoComplete="name" placeholder="Your name" required /></label>
+              <label>Full name *<input name="name" autoComplete="name" placeholder="Your name" required /></label>
             </div>
-            <label>Email address<input name="email" type="email" autoComplete="email" placeholder="you@example.com" required /></label>
+            <label>Email address *<input name="email" type="email" autoComplete="email" placeholder="you@example.com" required /></label>
             <div className={styles.row}>
               <label>Phone number<input name="phone" type="tel" autoComplete="tel" placeholder="Your phone number" /></label>
-              <ServicePicker key={defaultService} defaultService={defaultService} />
+              <ServicePicker key={requestedService} defaultService={requestedService} />
             </div>
-            <label className={styles.message}>Message<textarea name="message" placeholder="Type your message here..." rows={3} required /></label>
-            <label className={styles.upload}>Project photos <span>(optional)</span><input type="file" name="photos" accept="image/*" multiple onChange={attach} /><small>{files.length ? `${files.length} photo${files.length === 1 ? "" : "s"} selected` : "Up to 5 photos · 10 MB each"}</small></label>
+            <label className={styles.message}>Your project *<textarea value={message} onChange={event => setMessage(event.target.value)} name="message" placeholder="Tell us what you need help with, where the work is, and any details we should know." rows={3} required /></label>
+            <label className={styles.upload}>Project photos <span>(optional)</span><input type="file" name="photos" accept="image/*" multiple onChange={attach} /><small>{files.length ? `${files.length} photo${files.length === 1 ? "" : "s"} selected` : "Up to 5 photos / 10 MB each"}</small></label>
             <div className={styles.submitGroup} data-celebrating={celebrating}>
               {celebrating && <div className={styles.confetti} aria-hidden="true">{Array.from({length:18},(_,i)=><i key={i} style={{"--x":`${(i%6)*42-105}px`,"--y":`${-35-(i%4)*24}px`,"--r":`${i*57}deg`,"--delay":`${(i%3)*65}ms`,background:["#789480","#c4a45b","#8296ad"][i%3]}} />)}</div>}
-              <img className={styles.worker} src={celebrating ? "/images/contact-worker-celebrate.webp" : "/images/contact-worker.webp"} alt="" aria-hidden="true" width="160" height="240" loading="lazy" decoding="async" />
-              <button className={styles.submit} type="submit">Submit</button>
+              <button data-motion-cta className={styles.submit} type="submit">Submit</button>
             </div>
             {notice && <p className={styles.notice} role="status">{notice}</p>}
           </form>
+          <aside data-motion-item className={styles.details}>
+            <div className={styles.portrait} data-celebrating={celebrating}>
+              <img className={styles.worker} src={celebrating ? "/images/contact-worker-celebrate.webp" : "/images/service-workers/handyman-services.webp"} alt="Mertin home service worker" width="900" height="1200" loading="lazy" decoding="async" />
+            </div>
+            <div className={styles.infoCard}>
+              <div className={styles.infoItem}><span className={styles.infoIcon} aria-hidden="true">?</span><div><small>Local home services</small><strong>Cape Coral &amp; surrounding areas</strong></div></div>
+              <div className={styles.infoItem}><span className={styles.infoIcon} aria-hidden="true">?</span><div><small>Practical help for your home</small><strong>Repairs, cleaning &amp; improvements</strong></div></div>
+              <div className={styles.infoItem}><span className={styles.infoIcon} aria-hidden="true">?</span><div><small>Help us understand your project</small><strong>Attach up to 5 photos</strong></div></div>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
@@ -87,7 +105,7 @@ function ServicePicker({ defaultService }) {
     return () => document.removeEventListener("pointerdown", close);
   }, [open]);
   return <div ref={root} className={styles.serviceField} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false); }}>
-    <span id={`${id}-label`} className={styles.serviceLabel}>Choose service</span>
+    <span id={`${id}-label`} className={styles.serviceLabel}>Choose service *</span>
     <input type="hidden" name="service" value={value} />
     <button type="button" role="combobox" aria-labelledby={`${id}-label`} aria-expanded={open} aria-controls={`${id}-options`} aria-haspopup="listbox" aria-activedescendant={open ? `${id}-option-${focused}` : undefined} className={styles.serviceTrigger}
       onClick={() => setOpen(!open)} onKeyDown={(event) => {

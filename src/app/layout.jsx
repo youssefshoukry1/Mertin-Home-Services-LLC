@@ -1,4 +1,6 @@
 import "./globals.css";
+import "./Motion/motion.css";
+import SiteMotion from "./Motion/SiteMotion";
 import Footer from "./Footer/Footer";
 
 export const metadata = {
@@ -9,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en-US">
-      <body>{children}<Footer /></body>
+      <body>{children}<Footer /><SiteMotion /></body>
     </html>
   );
 }

@@ -36,15 +36,15 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className={styles.section} aria-labelledby="services-title">
+    <section data-motion-section id="services" className={styles.section} aria-labelledby="services-title">
       <div className={styles.container}>
-        <div className={styles.header}>
+        <div data-motion-group className={styles.header}>
           <h2 id="services-title">How can we help at home?</h2>
           <p>Explore our services and tell us what your home needs.</p>
         </div>
         <div className={styles.grid}>
           {services.map((service) => (
-            <article key={service.slug} className={styles.card}>
+            <article key={service.slug} data-motion-item data-motion-card className={styles.card}>
               <div className={styles.imagePanel}>
                 <img
                   src={`/services%20images/${service.slug === "home-repairs" ? "home%20repairs" : service.slug}.webp`}

@@ -1,3 +1,4 @@
+import { Wrench, Hammer, Package, Sparkles, PaintRoller, ArrowUpRight, ArrowDown } from "lucide-react";
 import styles from "./ServiceCardsHero.module.css";
 
 const services = {
@@ -36,19 +37,23 @@ const services = {
 export default function ServiceCardsHero({ serviceSlug = "handyman-services" }) {
   const service = services[serviceSlug] || services["handyman-services"];
   const imageSlug = services[serviceSlug] ? serviceSlug : "handyman-services";
+  const label = service.title.replace(" in Cape Coral", "");
+  const Icon = { "handyman-services": Wrench, "home-repairs": Hammer, "assembly-installation": Package, "cleaning-services": Sparkles, "home-renovation": PaintRoller }[imageSlug];
+  const imageName = imageSlug === "home-repairs" ? "home%20repairs" : imageSlug;
   return (
-    <section className={styles.hero} aria-labelledby="service-hero-title">
+    <section data-motion-section className={styles.hero} aria-labelledby="service-hero-title">
       <div className={styles.container}>
         <div className={styles.content}>
-          <span className={styles.badge}>Mertin Home Services LLC</span>
-          <h1 id="service-hero-title">{service.title}<span>{service.line}</span></h1>
+          <span className={styles.badge}>Mertin ? Cape Coral &amp; surrounding areas</span>
+          <h1 id="service-hero-title">{label}<em>{service.line}</em></h1>
           <p className={styles.description}>{service.description}</p>
-          <p className={styles.area}>Serving Cape Coral, Florida &amp; surrounding areas</p>
-          <a className={styles.button} href="#contact">Tell us about your project</a>
+          <div className={styles.actions}><a data-motion-cta className={styles.button} href="#contact">Request service <ArrowUpRight size={17} aria-hidden="true" /></a><a data-motion-cta className={styles.secondary} href="#service-included">Explore this service <ArrowDown size={14} aria-hidden="true" /></a></div>
+          <p className={styles.area}>Practical help for your home in Cape Coral, Florida.</p>
         </div>
-        <div className={styles.visual}>
-          <span className={styles.circle} aria-hidden="true" />
-          <img src={`/images/service-workers/${imageSlug}.webp`} alt={service.alt} width="900" height="1200" fetchPriority="high" decoding="async" />
+        <div data-motion-item className={styles.visual}>
+          
+          <img src={`/services%20images/${imageName}.webp`} alt={service.alt} width="1400" height="1120" fetchPriority="high" decoding="async" />
+          <div className={styles.caption}><Icon size={25} aria-hidden="true" /><span>{label}</span><small>MERTIN</small></div>
         </div>
       </div>
     </section>
