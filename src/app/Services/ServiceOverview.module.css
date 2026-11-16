@@ -51,3 +51,9 @@
 
 /* Terracotta details complement the warm neutral palette. */
 .badge { background:var(--accent-warm-soft); color:var(--accent-warm-ink); }
+
+/* The worker remains the main visual, with a small cleaning vignette beside her. */
+.workerScene { position:relative; display:flex; align-items:flex-end; justify-content:flex-start; min-width:0; padding:26px 0 0 10px; }
+.workerImage { display:block; width:88%; height:auto; max-height:520px; object-fit:contain; object-position:left bottom; }
+.cleaningAccent { position:absolute; right:0; top:28px; width:36%; max-width:170px; aspect-ratio:1; pointer-events:none; }
+@media(max-width:600px) { .workerScene { min-height:340px; justify-content:center; padding:20px 20px 0; } .workerImage { height:340px; width:auto; max-width:90%; } .cleaningAccent { width:125px; top:20px; right:12px; } }
