@@ -1,14 +1,14 @@
 ﻿.section { width: 100%; padding: 96px 32px; background: #111; color: #f5f5f5; }
 .container { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.3fr); align-items: center; gap: 72px; width: 100%; max-width: 1200px; margin-inline: auto; }
 .header { text-align: left; }
-.header > p:first-child { margin-bottom: 20px; color: #a3adb1; font-size: 11px; font-weight: 500; letter-spacing: .25em; }
+.header > p:first-child { margin-bottom: 20px; color: #b1aba3; font-size: 11px; font-weight: 500; letter-spacing: .25em; }
 .header h2 { margin: 0 0 24px; font-family: ui-serif, Georgia, serif; font-size: clamp(36px, 4vw, 52px); font-weight: 400; line-height: 1.08; letter-spacing: -.025em; }
-.header > span { color: #9ca3a7; font-size: 15px; line-height: 1.6; }
-.coverage { margin-top: 20px; color: #9ca3a7; font-size: 14px; line-height: 1.7; }
-.cta { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; margin-top: 30px; padding: 14px 24px; border: 1px solid #ffffff18; border-radius: 12px; background: #f1eee7; color: #191919; font-size: 14px; font-weight: 500; letter-spacing: -.01em; text-decoration: none; transition: background-color 150ms; }
-.cta:hover { background: #fff; }
+.header > span { color: #a7a29c; font-size: 15px; line-height: 1.6; }
+.coverage { margin-top: 20px; color: #a7a29c; font-size: 14px; line-height: 1.7; }
+.cta { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; margin-top: 30px; padding: 14px 24px; border: 1px solid #fffdfa18; border-radius: 12px; background: #f1eee7; color: #191919; font-size: 14px; font-weight: 500; letter-spacing: -.01em; text-decoration: none; transition: background-color 150ms; }
+.cta:hover { background: #fffdfa; }
 .cta:focus-visible { outline: 2px solid #f1eee7; outline-offset: 5px; }
-.frame { position: relative; height: 420px; overflow: hidden; border: 1px solid #303638; border-radius: 28px; background: #202629; box-shadow: 0 16px 50px #0002; }
+.frame { position: relative; height: 420px; overflow: hidden; border: 1px solid #383430; border-radius: 28px; background: #292520; box-shadow: 0 16px 50px #0002; }
 /* Google embeds have no public theme option; filter the standard roadmap. */
 .map { display: block; width: 100%; height: 100%; border: 0; filter: invert(90%) hue-rotate(180deg) brightness(.85) contrast(.9); color-scheme: normal; }
 @media (max-width: 900px) {
@@ -31,21 +31,21 @@
 .header, .frame { pointer-events: auto; }
 .globeHint { position: absolute; left: 50%; bottom: 40px; transform: translateX(-50%); z-index: 1; pointer-events: none; color: #8b8b8b; font-size: 12px; letter-spacing: .04em; }
 .globeHint { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
-.locationDot { width: 6px; height: 6px; flex-shrink: 0; border-radius: 50%; background: #f2f5ef; box-shadow: 0 0 0 4px #ffffff12, 0 0 12px #ffffff30; }
+.locationDot { width: 6px; height: 6px; flex-shrink: 0; border-radius: 50%; background: #f4f2f0; box-shadow: 0 0 0 4px #fffdfa12, 0 0 12px #fffdfa30; }
 
-.section { background:#f7f7f5; color:#252525; }
+.section { background:#f6f2eb; color:#292d2b; }
 .header { text-shadow:none; }
-.header > p:first-child,.header > span,.coverage,.globeHint { color:#686868; }
+.header > p:first-child,.header > span,.coverage,.globeHint { color:#66635e; }
 .cta { background:#292929; color:#fff; border:0; }
 .cta:hover { background:#414141; }
-.cta:focus-visible { outline-color:#686868; }
-.frame { border-color:#dededb; background:#ececea; box-shadow:0 16px 50px #25252512; }
+.cta:focus-visible { outline-color:#66635e; }
+.frame { border-color:var(--border-accent); background:var(--surface-secondary); box-shadow:0 16px 50px #292d2b12; }
 /* Crop Google's built-in place panel above the visible map frame. */
 .map { filter:none; color-scheme:light; width:calc(100% + 80px); max-width:none; height:calc(100% + 130px); margin-top:-130px; margin-left:-80px; }
 .globeBackground { background-image:none; }
-.locationDot { background:#686868; box-shadow:0 0 0 4px #2525250a; }
+.locationDot { background:#66635e; box-shadow:0 0 0 4px #292d2b0a; }
 .mapActivate { position:absolute; inset:0; z-index:2; border:0; background:transparent; cursor:pointer; }
-.mapActivate:focus-visible { outline:2px solid #686868; outline-offset:-5px; border-radius:28px; }
-.openMap { position:absolute; top:14px; left:14px; z-index:3; padding:10px 14px; border-radius:10px; background:#fff; color:#292929; box-shadow:0 2px 12px #0002; font-size:13px; font-weight:600; text-decoration:none; }
-.openMap:hover { background:#ececea; }
-.openMap:focus-visible { outline:2px solid #686868; outline-offset:3px; }
+.mapActivate:focus-visible { outline:2px solid #66635e; outline-offset:-5px; border-radius:28px; }
+.openMap { position:absolute; top:14px; left:14px; z-index:3; padding:10px 14px; border-radius:10px; background:#fffdfa; color:#292929; box-shadow:0 2px 12px #0002; font-size:13px; font-weight:600; text-decoration:none; }
+.openMap:hover { background:var(--surface-secondary); }
+.openMap:focus-visible { outline:2px solid #66635e; outline-offset:3px; }

@@ -25,7 +25,7 @@ export default function AboutIntro({ serviceSlug = "handyman-services" }) {
           <p>Mertin Home Services LLC helps homeowners in Cape Coral and surrounding areas with repairs, cleaning, assembly, and home improvements. Tell us what needs attention, and we&apos;ll help you take the next step.</p>
           <div className={styles.actions}>
             <a data-motion-cta href="#contact">Tell us about your project</a>
-            <a data-motion-cta href="/#services">Explore our services</a>
+            <a data-motion-cta="secondary" href="/#services">Explore our services</a>
           </div>
           <div className={styles.stats}>
             <div><span className={styles.icon}><MapPin size={20} /></span><span><strong>Local service</strong></span></div>

@@ -47,7 +47,7 @@ export default function ServiceCardsHero({ serviceSlug = "handyman-services" }) 
           <span className={styles.badge}>Mertin ? Cape Coral &amp; surrounding areas</span>
           <h1 id="service-hero-title">{label}<em>{service.line}</em></h1>
           <p className={styles.description}>{service.description}</p>
-          <div className={styles.actions}><a data-motion-cta className={styles.button} href="#contact">Request service <ArrowUpRight size={17} aria-hidden="true" /></a><a data-motion-cta className={styles.secondary} href="#service-included">Explore this service <ArrowDown size={14} aria-hidden="true" /></a></div>
+          <div className={styles.actions}><a data-motion-cta className={styles.button} href="#contact">Request service <ArrowUpRight size={17} aria-hidden="true" /></a><a data-motion-cta="secondary" className={styles.secondary} href="#service-included">Explore this service <ArrowDown size={14} aria-hidden="true" /></a></div>
           <p className={styles.area}>Practical help for your home in Cape Coral, Florida.</p>
         </div>
         <div data-motion-item className={styles.visual}>

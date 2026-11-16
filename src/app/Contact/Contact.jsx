@@ -70,7 +70,7 @@ export default function Contact({ defaultService = "" }) {
             <label className={styles.message}>Your project *<textarea value={message} onChange={event => setMessage(event.target.value)} name="message" placeholder="Tell us what you need help with, where the work is, and any details we should know." rows={3} required /></label>
             <label className={styles.upload}>Project photos <span>(optional)</span><input type="file" name="photos" accept="image/*" multiple onChange={attach} /><small>{files.length ? `${files.length} photo${files.length === 1 ? "" : "s"} selected` : "Up to 5 photos / 10 MB each"}</small></label>
             <div className={styles.submitGroup} data-celebrating={celebrating}>
-              {celebrating && <div className={styles.confetti} aria-hidden="true">{Array.from({length:18},(_,i)=><i key={i} style={{"--x":`${(i%6)*42-105}px`,"--y":`${-35-(i%4)*24}px`,"--r":`${i*57}deg`,"--delay":`${(i%3)*65}ms`,background:["#789480","#c4a45b","#8296ad"][i%3]}} />)}</div>}
+              {celebrating && <div className={styles.confetti} aria-hidden="true">{Array.from({length:18},(_,i)=><i key={i} style={{"--x":`${(i%6)*42-105}px`,"--y":`${-35-(i%4)*24}px`,"--r":`${i*57}deg`,"--delay":`${(i%3)*65}ms`,background:["#958777","#c4a45b","#a4988b"][i%3]}} />)}</div>}
               <button data-motion-cta className={styles.submit} type="submit">Submit</button>
             </div>
             {notice && <p className={styles.notice} role="status">{notice}</p>}

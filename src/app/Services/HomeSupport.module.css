@@ -1,21 +1,34 @@
-.section { padding:56px 24px; background:#f7f7f5; }
-.panel { position:relative; isolation:isolate; overflow:hidden; max-width:1280px; margin:auto; padding:64px; border-radius:26px; background:#20271e; color:#f7f7f5; display:grid; grid-template-columns:1.15fr 1fr; align-items:center; gap:72px; box-shadow:0 22px 48px #25252516; }
-.panel::before { content:""; position:absolute; z-index:-1; width:440px; height:440px; border:1px solid #ffffff12; border-radius:50%; top:-290px; right:-100px; box-shadow:0 0 0 55px #ffffff04,0 0 0 110px #ffffff03; pointer-events:none; }
-.eyebrow { display:flex; align-items:center; gap:8px; color:#c8d9bc; text-transform:uppercase; font-size:11px; line-height:1.5; font-weight:700; letter-spacing:.07em; margin-bottom:24px; }
+.section { padding:56px 24px; background:#f6f2eb; }
+.panel { position:relative; isolation:isolate; overflow:hidden; max-width:1280px; margin:auto; padding:64px; border-radius:26px; background:#27231e; color:#f6f2eb; display:grid; grid-template-columns:1.15fr 1fr; align-items:center; gap:72px; box-shadow:0 22px 48px #292d2b16; }
+.panel::before { content:""; position:absolute; z-index:-1; width:440px; height:440px; border:1px solid #fffdfa12; border-radius:50%; top:-290px; right:-100px; box-shadow:0 0 0 55px #fffdfa04,0 0 0 110px #fffdfa03; pointer-events:none; }
+.eyebrow { display:flex; align-items:center; gap:8px; color:#d1cbc4; text-transform:uppercase; font-size:11px; line-height:1.5; font-weight:700; letter-spacing:.07em; margin-bottom:24px; }
 .eyebrow svg { flex-shrink:0; }
 .copy h2 { margin:0 0 18px; font-size:clamp(32px,3.2vw,44px); font-weight:600; line-height:1.15; letter-spacing:-.035em; }
-.copy > p { margin:0; color:#c4c9bf; font-size:15px; line-height:1.75; }
-.highlight { display:flex; flex-direction:column; gap:4px; border-left:3px solid #dce5cb; padding-left:14px; margin:26px 0; }
+.copy > p { margin:0; color:#cbc5bd; font-size:15px; line-height:1.75; }
+.highlight { display:flex; flex-direction:column; gap:4px; border-left:3px solid #ddd8d3; padding-left:14px; margin:26px 0; }
 .highlight strong { font-size:18px; line-height:1.3; letter-spacing:-.02em; }
-.highlight span { font-size:12px; color:#c4c9bf; line-height:1.5; }
-.button { display:inline-flex; align-items:center; justify-content:center; gap:12px; min-height:48px; padding:12px 20px; border-radius:30px; background:#dce5cb; color:#20271e; font-size:14px; font-weight:600; line-height:1.4; text-decoration:none; transition:background-color .18s; }
-.button:hover { background:#eff4e7; }
+.highlight span { font-size:12px; color:#cbc5bd; line-height:1.5; }
+.button { display:inline-flex; align-items:center; justify-content:center; gap:12px; min-height:48px; padding:12px 20px; border-radius:30px; background:#ddd8d3; color:#27231e; font-size:14px; font-weight:600; line-height:1.4; text-decoration:none; transition:background-color .18s; }
+.button:hover { background:#f0eeeb; }
 .button:focus-visible { outline:2px solid #fff; outline-offset:5px; }
 .steps { list-style:none; display:grid; gap:12px; padding:0; margin:0; }
-.steps li { display:flex; align-items:flex-start; gap:20px; padding:20px 18px; border:1px solid #ffffff26; border-radius:16px; background:#ffffff0c; }
-.number { display:grid; place-items:center; flex-shrink:0; width:30px; height:30px; border-radius:50%; background:#e4ecd9; color:#45553b; font-size:12px; font-weight:700; }
+.steps li { display:flex; align-items:flex-start; gap:20px; padding:20px 18px; border:1px solid #fffdfa26; border-radius:16px; background:#fffdfa0c; }
+.number { display:grid; place-items:center; flex-shrink:0; width:30px; height:30px; border-radius:50%; background:#e6e3df; color:#51493f; font-size:12px; font-weight:700; }
 .steps h3 { font-size:16px; line-height:1.4; margin:0 0 4px; font-weight:600; }
-.steps p { margin:0; color:#c4c9bf; font-size:13px; line-height:1.6; }
+.steps p { margin:0; color:#cbc5bd; font-size:13px; line-height:1.6; }
 @media(max-width:1000px) { .panel { padding:40px; gap:36px; } }
 @media(max-width:760px) { .section { padding:36px 20px; } .panel { grid-template-columns:1fr; padding:32px 24px; gap:32px; border-radius:22px; } .copy h2 { font-size:34px; } .steps li { gap:14px; padding:18px 16px; } }
 @media(prefers-reduced-motion:reduce) { .button { transition:none; } }
+
+/* Warm cream, charcoal, and terracotta palette. */
+.panel { background:var(--surface-secondary); color:var(--accent-ink); }
+.eyebrow, .copy > p, .highlight span, .steps p { color:var(--text-secondary); }
+.highlight { border-color:#b3a99e; }
+.steps li { background:#fffdfa80; border-color:var(--border-accent); }
+.number { background:var(--accent-light); color:var(--accent-ink); }
+.panel::before { border-color:#9a8e7f25; box-shadow:0 0 0 55px #9a8e7f06,0 0 0 110px #9a8e7f05; }
+
+/* Terracotta details complement the warm neutral palette. */
+.eyebrow svg { color:var(--accent-warm-ink); }
+.highlight { border-color:var(--accent-warm); }
+.number { background:var(--accent-warm-soft); color:var(--accent-warm-ink); }

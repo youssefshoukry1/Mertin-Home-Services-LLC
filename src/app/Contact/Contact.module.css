@@ -1,4 +1,4 @@
-.section { position:relative; padding:80px 32px; background:radial-gradient(ellipse at 25% 20%,#373735,transparent 65%),repeating-linear-gradient(115deg,#ffffff02 0 1px,transparent 1px 4px),#242625; color:#f6f4f0; }
+.section { position:relative; padding:80px 32px; background:radial-gradient(ellipse at 25% 20%,#373735,transparent 65%),repeating-linear-gradient(115deg,#fffdfa02 0 1px,transparent 1px 4px),#292521; color:#f6f4f0; }
 .container { max-width:1360px; margin:auto; }
 .heading { margin-bottom:40px; text-align:left; }
 .badge { display:inline-block; padding:10px 18px; border:1px solid #c7ab923d; border-radius:999px; background:#c7ab9210; color:#dfb89b; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; }
@@ -10,13 +10,13 @@
 .required { grid-column:1/-1; color:#b9b8b4; font-size:12px; margin:0 0 2px; }
 .row { display:contents; }
 .form label,.serviceField { display:flex; flex-direction:column; gap:9px; min-width:0; color:#e3e2de; font-size:13px; font-weight:500; }
-.form input:not([type=file]),.form textarea,.serviceTrigger { width:100%; min-width:0; padding:16px 20px; min-height:56px; border:0; border-radius:30px; background:#faf9f7; color:#252525; font:400 14px/1.5 Arial,sans-serif; outline:none; }
+.form input:not([type=file]),.form textarea,.serviceTrigger { width:100%; min-width:0; padding:16px 20px; min-height:56px; border:0; border-radius:30px; background:#faf9f7; color:#292d2b; font:400 14px/1.5 Arial,sans-serif; outline:none; }
 .form textarea { border-radius:26px; min-height:160px; resize:vertical; }
 .form input::placeholder,.form textarea::placeholder { color:#777; }
 .form input:focus-visible,.form textarea:focus-visible,.serviceTrigger:focus-visible { box-shadow:0 0 0 3px #dfb89b80; }
 .message,.upload { grid-column:1/-1; }
 .upload > span { display:none; }
-.upload input { padding:10px; background:#ffffff0c; border:0; border-radius:18px; color:#ccc; font-size:13px; }
+.upload input { padding:10px; background:#fffdfa0c; border:0; border-radius:18px; color:#ccc; font-size:13px; }
 .upload input::file-selector-button { border:0; border-radius:20px; padding:10px 16px; margin-right:10px; background:#eeece7; color:#292929; cursor:pointer; }
 .upload small { color:#b9b8b4; font-size:11px; font-weight:400; }
 .submitGroup { position:relative; justify-self:start; }
@@ -38,7 +38,7 @@
 .serviceTrigger svg { flex-shrink:0; transition:transform .15s; }
 .serviceOptions { position:absolute; top:calc(100% + 8px); left:0; z-index:30; width:100%; min-width:240px; max-width:calc(100vw - 48px); padding:6px; margin:0; list-style:none; background:#faf9f7; border-radius:18px; box-shadow:0 12px 30px #0004; }
 .serviceOptions li { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px; color:#555; border-radius:12px; font-size:13px; cursor:pointer; }
-.serviceOptions li[data-focused=true] { background:#eae4db; color:#252525; }
+.serviceOptions li[data-focused=true] { background:#eae4db; color:#292d2b; }
 .serviceOptions li[aria-selected=true] { color:#71513a; }
 .confetti { position:absolute; left:50%; top:0; z-index:2; pointer-events:none; }
 .confetti i { position:absolute; width:6px; height:10px; border-radius:2px; opacity:0; animation:confettiBurst 1700ms ease-out var(--delay) forwards; }
@@ -49,3 +49,21 @@
 @media(max-width:760px) { .section { padding:52px 20px; } .columns { grid-template-columns:1fr; gap:36px; } .heading { margin-bottom:30px; } .details { margin-top:0; max-width:480px; width:100%; justify-self:center; } .portrait { aspect-ratio:1.45; max-width:400px; margin-inline:auto; } }
 @media(max-width:480px) { .form { grid-template-columns:1fr; gap:18px; } .heading p br { display:none; } .form textarea { min-height:140px; } }
 @media(prefers-reduced-motion:reduce) { .submit,.serviceTrigger svg { transition:none; } .confetti { display:none; } .portrait[data-celebrating=true] .worker { animation:none; } }
+
+/* Warm cream, charcoal, and terracotta palette. */
+.section { background:radial-gradient(ellipse at 25% 20%,#f2ece4,transparent 65%),var(--surface-secondary); color:var(--accent-ink); }
+.badge { background:#fffdfa80; border-color:var(--border-accent); color:var(--accent-ink); }
+.heading h2 em, .infoItem strong { color:#7a6e5f; }
+.heading p, .required, .upload small, .notice { color:var(--text-secondary); }
+.form label, .serviceField { color:var(--accent-ink); }
+.form input:not([type=file]), .form textarea, .serviceTrigger, .infoCard, .serviceOptions { background:#fffdfa; color:#3c3730; }
+.form input:focus-visible, .form textarea:focus-visible, .serviceTrigger:focus-visible { box-shadow:0 0 0 3px #b3a99e80; }
+.upload input { background:#fffdfa80; color:var(--text-secondary); }
+.upload input::file-selector-button, .infoIcon { background:var(--accent-light); color:var(--accent-ink); }
+.infoItem + .infoItem { border-color:var(--border-accent); }
+.serviceOptions li[data-focused=true] { background:var(--surface-secondary); color:var(--accent-ink); }
+.serviceOptions li[aria-selected=true] { color:var(--accent-ink); }
+.submit:focus-visible { outline-color:var(--accent-ink); }
+
+/* Terracotta details complement the warm neutral palette. */
+.badge { background:var(--accent-warm-soft); color:var(--accent-warm-ink); border-color:transparent; }

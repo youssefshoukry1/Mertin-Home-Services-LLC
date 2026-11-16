@@ -1,21 +1,21 @@
-.hero { position:relative; isolation:isolate; overflow:hidden; margin:0 12px 16px; border-radius:24px; background:#414e43; color:#fff; font-family:Arial,Helvetica,sans-serif; }
+.hero { position:relative; isolation:isolate; overflow:hidden; margin:0 12px 16px; border-radius:24px; background:#50483f; color:#fff; font-family:Arial,Helvetica,sans-serif; }
 .inner { position:relative; max-width:1320px; min-height:640px; margin:auto; display:grid; grid-template-columns:1.55fr 1fr; align-items:center; padding:70px 36px 86px; }
 .content { position:relative; z-index:2; }
 .badge { display:inline-block; padding:9px 17px; border-radius:999px; background:rgba(255,255,255,.13); font-size:13px; font-weight:600; margin-bottom:28px; }
 .content h1 { margin:0; font-size:clamp(42px,4.4vw,66px); line-height:1.15; letter-spacing:-.045em; font-weight:700; }
-.content h1 span { color:#c9dac2; }
-.content p { max-width:570px; margin:24px 0 16px; color:#edf0eb; font-size:16px; line-height:1.7; }
-.coverage { font-size:13px; line-height:1.7; color:#e0e6dc; }
-.coverage strong { color:#d8e6c9; }
+.content h1 span { color:#d4cec8; }
+.content p { max-width:570px; margin:24px 0 16px; color:#f0eeeb; font-size:16px; line-height:1.7; }
+.coverage { font-size:13px; line-height:1.7; color:#e5e1dd; }
+.coverage strong { color:#dcd8d3; }
 .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:36px; }
 .actions a { display:inline-flex; align-items:center; justify-content:center; gap:18px; min-height:48px; padding:13px 22px; border-radius:999px; font-size:14px; font-weight:600; text-decoration:none; transition:background .2s,transform .2s; }
-.primary { background:#e4eadc; color:#20271f; }
-.primary:hover { background:#f1f5ec;  }
-.secondary { color:#fff; border:1px solid #a4b0a2; background:transparent; }
+.primary { background:#e6e3e0; color:#27231f; }
+.primary:hover { background:#f2f1ef;  }
+.secondary { color:#fff; border:1px solid #b3aa9f; background:transparent; }
 .secondary:hover { background:rgba(255,255,255,.1);  }
 .actions a:focus-visible { outline:2px solid white; outline-offset:5px; }
-.note { display:block; margin-top:18px; font-size:11px; line-height:1.6; color:#d7dfd2; }
-.lines { position:absolute; top:0; left:25%; width:600px; height:100%; opacity:.12; pointer-events:none; stroke:#d6e6cb; stroke-width:1; }
+.note { display:block; margin-top:18px; font-size:11px; line-height:1.6; color:#ddd9d4; }
+.lines { position:absolute; top:0; left:25%; width:600px; height:100%; opacity:.12; pointer-events:none; stroke:#ddd9d4; stroke-width:1; }
 .visual { position:absolute; z-index:1; right:-60px; bottom:0; width:450px; height:560px; }
 .visual img { position:absolute; bottom:0; width:100%; height:100%; object-fit:contain; object-position:bottom; }
 .circle { position:absolute; top:5%; left:0; width:100%; aspect-ratio:1; border:1px solid rgba(221,235,210,.25); border-radius:50%; }
@@ -34,3 +34,18 @@
 @media(min-width:1600px) { .visual { right:auto; width:100%; height:auto; } }
 @media(max-width:1100px) { .inner { grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:18px; padding:42px 26px 0; } .content h1 { font-size:42px; } .visual { width:100%; height:auto; right:auto; } }
 @media(max-width:900px) { .inner { display:flex; flex-direction:column; align-items:stretch; min-height:0; padding:38px 24px 0; gap:0; } .content { padding-bottom:0; } .content h1 { font-size:clamp(35px,6vw,52px); } .visual { align-self:center; width:min(100%,480px); height:auto; margin-top:28px; right:auto; } }
+
+/* Warm cream, charcoal, and terracotta palette. */
+.hero { background:var(--surface-secondary); color:#3c3730; }
+.badge { background:#fffdfaa6; color:var(--accent-ink); }
+.content h1 span { color:#7a6e5f; }
+.content p, .coverage, .note { color:var(--text-secondary); }
+.coverage strong { color:var(--accent-ink); }
+.primary, .secondary { background:var(--accent-light); color:var(--accent-ink); border-color:var(--border-accent); }
+.primary:hover, .secondary:hover { background:var(--accent-hover); }
+.lines { stroke:#9a8e7f; opacity:.2; }
+.circle { border-color:#a0958755; }
+.actions a:focus-visible { outline-color:var(--accent-ink); }
+
+/* Terracotta details complement the warm neutral palette. */
+.badge { background:var(--accent-warm-soft); color:var(--accent-warm-ink); }

@@ -14,7 +14,7 @@ export default function ServiceHero() {
           <div className={styles.coverage}><strong>Local home care:</strong> Cape Coral, Florida &amp; surrounding areas</div>
           <div className={styles.actions}>
             <a data-motion-cta className={styles.primary} href="#contact">Tell us what you need <span aria-hidden="true">&#8599;</span></a>
-            <a data-motion-cta className={styles.secondary} href="#planner">Estimate your project</a>
+            <a data-motion-cta="secondary" className={styles.secondary} href="#planner">Estimate your project</a>
           </div>
           <span className={styles.note}>Repairs &middot; Cleaning &middot; Assembly &middot; Home improvements</span>
         </div>

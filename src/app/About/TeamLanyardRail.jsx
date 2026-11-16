@@ -1001,7 +1001,7 @@ export function TeamLanyardRail({ items, eyebrow, heading, caption, action, comp
         </div>
 
         {items.map((item, i) => {
-            const tone = item.review ? "text-[#626760]" : TONES[((item.tone ?? (i % 5) + 1) - 1) % TONES.length] ?? TONES[0];
+            const tone = item.review ? "text-[#b1a79b]" : TONES[((item.tone ?? (i % 5) + 1) - 1) % TONES.length] ?? TONES[0];
             const isActive = active === i;
             const isFlipped = flipped === i;
             const strap = g.straps[i] ?? 0;
