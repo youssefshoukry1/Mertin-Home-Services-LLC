@@ -47,7 +47,7 @@ export default function Services() {
             <article key={service.slug} data-motion-item data-motion-card className={styles.card}>
               <div className={styles.imagePanel}>
                 <img
-                  src={`/services%20images/${service.slug === "home-repairs" ? "home%20repairs" : service.slug}.webp`}
+                  src={`/services%20images/${service.slug === "home-repairs" ? "home-repairs-worker-v3" : service.slug === "handyman-services" ? "handyman-worker-v3" : service.slug}.webp`}
                   alt={service.alt}
                   loading="lazy"
                   decoding="async"

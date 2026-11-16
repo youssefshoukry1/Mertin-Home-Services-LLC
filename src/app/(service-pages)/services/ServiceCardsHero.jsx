@@ -39,7 +39,7 @@ export default function ServiceCardsHero({ serviceSlug = "handyman-services" }) 
   const imageSlug = services[serviceSlug] ? serviceSlug : "handyman-services";
   const label = service.title.replace(" in Cape Coral", "");
   const Icon = { "handyman-services": Wrench, "home-repairs": Hammer, "assembly-installation": Package, "cleaning-services": Sparkles, "home-renovation": PaintRoller }[imageSlug];
-  const imageName = imageSlug === "home-repairs" ? "home%20repairs" : imageSlug;
+  const imageName = imageSlug === "home-repairs" ? "home-repairs-worker-v3" : imageSlug === "handyman-services" ? "handyman-worker-v3" : imageSlug;
   return (
     <section data-motion-section className={styles.hero} aria-labelledby="service-hero-title">
       <div className={styles.container}>
