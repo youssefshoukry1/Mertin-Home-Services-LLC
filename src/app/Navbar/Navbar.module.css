@@ -82,3 +82,14 @@
 .link:hover { background:#ffffff12; }
 .cta,.mobilePanel .mobileCta { background:var(--accent-primary); color:#fffdfa; }
 .root a:focus-visible,.root button:focus-visible { outline-color:var(--accent-warm); }
+
+/* Keep mobile navigation readable on its charcoal surface. */
+@media (max-width:760px) {
+ .root[data-menu-open=true] .bar { background:#292d2b; }
+ .mobilePanel > a,.mobilePanel > button { color:#fffdfa; border-color:#ffffff26; }
+ .mobilePanel .serviceList { padding:8px 0; }
+ .mobilePanel .serviceList a { color:#eee6dc; min-height:48px; }
+ .mobilePanel .serviceList a:hover,.mobilePanel .serviceList a[aria-current=page] { background:#ffffff12; color:#fffdfa; }
+ .mobilePanel .mobileCta { color:#fffdfa; border-color:transparent; }
+ .mobilePanel a:focus-visible,.mobilePanel button:focus-visible { outline-color:#dfa58d; }
+}
