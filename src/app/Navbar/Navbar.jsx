@@ -72,6 +72,7 @@ export default function Navbar() {
           else { setMenuOpen(false); menuTrigger.current?.focus(); }
         }
       }}>
+        <button className={styles.scrim} aria-label="Close navigation" aria-hidden={!menuOpen} tabIndex={-1} onClick={close} />
         <div className={styles.bar}>
           <Link href="/" className={styles.brand} aria-label="Mertin Home Services LLC home" onClick={close}>
             <span className={styles.wordmark}>Mertin.</span>
@@ -88,11 +89,12 @@ export default function Navbar() {
             {links.slice(1).map(([label, href, Icon]) => <Link key={label} href={href} className={styles.link} aria-label={label}><ItemContent label={label} Icon={Icon} /></Link>)}
           </nav>
           <Link className={styles.cta} href={contact} aria-label="Request Service"><ItemContent label="Request Service" Icon={ArrowUpRight} /></Link>
-          <button ref={menuTrigger} type="button" className={styles.menuButton} aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => { setMenuOpen(!menuOpen); setServicesOpen(false); }}>{menuOpen ? <X size={21} /> : <Menu size={21} />}</button>
-          <nav id="mobile-navigation" className={styles.mobilePanel} hidden={!menuOpen} aria-label="Mobile navigation">
+          <button ref={menuTrigger} type="button" className={styles.menuButton} aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => { setMenuOpen(!menuOpen); setServicesOpen(false); }}><Menu className={styles.menuGlyph} size={21} aria-hidden="true" /><X className={styles.closeGlyph} size={21} aria-hidden="true" /></button>
+          <nav id="mobile-navigation" className={styles.mobilePanel} inert={!menuOpen} aria-hidden={!menuOpen} aria-label="Mobile navigation">
+            <p className={styles.menuEyebrow}>Explore Mertin</p>
             <Link href="/" onClick={close}>Home<ArrowUpRight size={20} /></Link>
             <button type="button" aria-expanded={servicesOpen} aria-controls="mobile-services" onClick={() => setServicesOpen(!servicesOpen)}>Services<ChevronDown size={20} /></button>
-            <div id="mobile-services" hidden={!servicesOpen}>{serviceList}</div>
+            <div id="mobile-services" className={styles.mobileAccordion} data-open={servicesOpen} inert={!servicesOpen}><div>{serviceList}</div></div>
             {links.slice(1).map(([label, href]) => <Link key={label} href={href} onClick={close}>{label}<ArrowUpRight size={20} /></Link>)}
             <Link href={contact} onClick={close} className={styles.mobileCta}>Request Service<ArrowUpRight size={20} /></Link>
           </nav>

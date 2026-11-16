@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Wrench, Hammer, Package, Sparkles, PaintRoller } from "lucide-react";
 import styles from "./ProjectPlanner.module.css";
 const services = [
@@ -29,6 +29,16 @@ const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "
 function Choices({options,value,onChange,name}) { return <div className={styles.choices}>{options.map(option=><label key={option} className={styles.choice}><input type="radio" name={name} checked={value===option} onChange={()=>onChange(option)} /><span>{option}</span></label>)}</div>; }
 export default function ProjectPlanner() {
  const [index,setIndex]=useState(0);
+ const panelRef=useRef(null);
+ const [estimateVisible,setEstimateVisible]=useState(false);
+ useEffect(()=>{
+  const observer=new IntersectionObserver(([entry])=>{
+   setEstimateVisible(entry.isIntersecting);
+   document.body.toggleAttribute("data-planner-visible",entry.isIntersecting);
+  },{rootMargin:"-90px 0px -120px 0px"});
+  observer.observe(panelRef.current);
+  return ()=>{observer.disconnect();document.body.removeAttribute("data-planner-visible");};
+ },[]);
  const [scope,setScope]=useState("One small task");
  const [timing,setTiming]=useState("Flexible");
  const [tasks,setTasks]=useState([]);
@@ -45,12 +55,12 @@ export default function ProjectPlanner() {
  }
  return <section data-motion-section id="planner" className={styles.section} aria-labelledby="planner-title"><div className={styles.inner}>
   <header data-motion-group className={styles.heading}><h2 id="planner-title">Plan your next<br /><em>home project.</em></h2><p>Choose a service and tell us what you have in mind. See an instant sample estimate and share your project with Mertin Home Services LLC.</p></header>
-  <div className={styles.panel}><div className={styles.steps}>
+  <div ref={panelRef} className={styles.panel}><div className={styles.steps}>
    <fieldset><legend><b>1</b>What do you need help with?</legend><p>Choose a service to get started.</p><div className={styles.choices}>{services.map(({title,description,Icon},i)=><label key={title} className={styles.choice}><input type="radio" name="planner-service" checked={index===i} onChange={()=>{setIndex(i);setTasks([]);}} /><Icon size={25} aria-hidden="true"/><span><strong>{title}</strong><small>{description}</small></span></label>)}</div></fieldset>
    <fieldset><legend><b>2</b>How much work is involved?</legend><Choices name="planner-scope" options={["One small task","A few tasks","One room","Several rooms","Not sure yet"]} value={scope} onChange={setScope}/></fieldset>
    <fieldset><legend><b>3</b>When would you like help?</legend><Choices name="planner-timing" options={["As soon as available","Within a few weeks","Planning ahead","Flexible"]} value={timing} onChange={setTiming}/><p className={styles.note}>Your preferred timing helps us plan. Availability is confirmed separately.</p></fieldset>
    <fieldset><legend><b>4</b>What should we look at?</legend><p>Select any tasks you would like to discuss.</p><div className={styles.choices}>{service.tasks.map(task=><label key={task} className={styles.choice}><input type="checkbox" checked={tasks.includes(task)} onChange={()=>setTasks(current=>current.includes(task)?current.filter(t=>t!==task):[...current,task])}/><span>{task}</span></label>)}</div></fieldset>
-  </div><aside className={`${styles.summary} ${styles.desktopSummary}`} aria-live="polite"><span className={styles.eyebrow}>Your project</span><h3>{service.title}</h3><ul><li>{scope}</li><li>{timing}</li>{tasks.map(task=><li key={task}>{task}</li>)}</ul><div className={styles.price}><small>Estimated price / USD</small><strong>From {currency.format(estimate)}</strong><dl className={styles.breakdown}><div><dt>Selected project size</dt><dd>{currency.format(scopePrice)}</dd></div><div><dt>Additional tasks ({extraTasks})</dt><dd>{currency.format(taskPrice)}</dd></div></dl><p>The first selected task is included. Each additional task adds {currency.format(rate.additionalTask)}. Materials and applicable taxes are excluded.</p><p className={styles.testNote}>Test pricing for design review. Final company rates are pending approval.</p></div><button data-motion-cta type="button" onClick={continueToContact}>Continue to your request</button><small className={styles.hint}>Your choices will be added to the contact form.</small></aside><aside className={`${styles.summary} ${styles.mobileSummary}`} aria-label="Live project estimate">
+  </div><aside className={`${styles.summary} ${styles.desktopSummary}`} aria-live="polite"><span className={styles.eyebrow}>Your project</span><h3>{service.title}</h3><ul><li>{scope}</li><li>{timing}</li>{tasks.map(task=><li key={task}>{task}</li>)}</ul><div className={styles.price}><small>Estimated price / USD</small><strong>From {currency.format(estimate)}</strong><dl className={styles.breakdown}><div><dt>Selected project size</dt><dd>{currency.format(scopePrice)}</dd></div><div><dt>Additional tasks ({extraTasks})</dt><dd>{currency.format(taskPrice)}</dd></div></dl><p>The first selected task is included. Each additional task adds {currency.format(rate.additionalTask)}. Materials and applicable taxes are excluded.</p><p className={styles.testNote}>Test pricing for design review. Final company rates are pending approval.</p></div><button data-motion-cta type="button" onClick={continueToContact}>Continue to your request</button><small className={styles.hint}>Your choices will be added to the contact form.</small></aside><aside className={`${styles.summary} ${styles.mobileSummary}`} data-visible={estimateVisible} inert={!estimateVisible} aria-hidden={!estimateVisible} aria-label="Live project estimate">
     <div className={styles.summaryInfo}><span className={styles.eyebrow}>Your estimate &middot; USD</span><strong className={styles.livePrice} aria-live="polite" aria-atomic="true">From {currency.format(estimate)}</strong><span className={styles.testLabel}>Test pricing &middot; final quote to be confirmed</span></div>
     <div className={styles.selection}><strong>{service.title}</strong><span>{scope}{tasks.length ? ` / ${tasks.length} task${tasks.length === 1 ? "" : "s"}` : ""}</span><small>Materials and applicable taxes excluded.</small></div>
     <button data-motion-cta type="button" onClick={continueToContact}>Request quote</button>
