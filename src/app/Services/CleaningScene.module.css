@@ -3,14 +3,14 @@
 .object { position:relative; width:66%; aspect-ratio:1; transform:rotateX(23deg) rotateY(-18deg) rotateZ(-12deg); transform-style:preserve-3d; }
 .glass { position:absolute; inset:0; overflow:hidden; border:7px solid #e5ded3; border-radius:22px; background:linear-gradient(135deg,#d7e9e8,#f4fcf9 45%,#c3d9d7); box-shadow:1px 1px 0 #bab5aa,2px 2px 0 #bab5aa,3px 3px 0 #bab5aa,4px 4px 0 #bab5aa,5px 5px 0 #bab5aa,6px 6px 0 #bab5aa,18px 28px 30px #292d2b25,inset 0 0 20px #fff9; }
 .reflection { position:absolute; inset:0; background:linear-gradient(120deg,transparent 22%,#ffffff85 22%,#ffffff85 29%,transparent 29%,transparent 36%,#ffffff55 36%,#ffffff55 39%,transparent 39%); }
-.dirt { position:absolute; inset:0; overflow:hidden; animation:wipe 9s infinite; }
+.dirt { position:absolute; inset:0; overflow:hidden; animation:wipe 5.2s infinite; }
 .stains { position:absolute; inset:0; background:radial-gradient(ellipse at 21% 26%,#8e795b99 0%,#8e795b45 10%,transparent 18%),radial-gradient(ellipse at 74% 65%,#88765999 0%,#88765935 14%,transparent 23%),radial-gradient(ellipse at 35% 79%,#a18b6770 0%,transparent 17%),radial-gradient(ellipse at 80% 20%,#9a86656b 0%,transparent 22%),repeating-linear-gradient(105deg,#9c8c711c 0 3px,transparent 3px 29px),#afa18480; }
-.tool { position:absolute; top:5%; left:0; width:15%; height:90%; transform-style:preserve-3d; animation:sweep 9s infinite; filter:drop-shadow(7px 9px 4px #292d2b30); }
+.tool { position:absolute; top:5%; left:0; width:15%; height:90%; transform-style:preserve-3d; animation:sweep 5.2s infinite; filter:drop-shadow(7px 9px 4px #292d2b30); }
 .blade { position:absolute; height:100%; width:32%; left:5%; border-radius:7px; background:linear-gradient(90deg,#292d2b 0 20%,#a4aaa5 20% 32%,#f5f5ed 48%,#8d9690 75%,#383f3b 90%); box-shadow:3px 0 0 #252b28; }
 .neck { position:absolute; top:42%; left:30%; width:100%; height:16%; border-radius:5px; background:linear-gradient(#e5e5dc,#969c95); }
 .handle { position:absolute; top:40%; left:100%; width:150%; height:20%; border-radius:8px 18px 18px 8px; background:linear-gradient(#d37b5d,#b95135 45%,#813d2a); box-shadow:0 3px 0 #703623; }
-.shine { position:absolute; inset:-50%; background:linear-gradient(110deg,transparent 40%,#fff9 48%,transparent 56%); animation:shine 9s infinite; }
-.sparkle { position:absolute; color:#fff; font-size:44px; text-shadow:0 0 10px #94aaa6; animation:sparkle 9s infinite; }
+.shine { position:absolute; inset:-50%; background:linear-gradient(110deg,transparent 40%,#fff9 48%,transparent 56%); animation:shine 5.2s infinite; }
+.sparkle { position:absolute; color:#fff; font-size:44px; text-shadow:0 0 10px #94aaa6; animation:sparkle 5.2s infinite; }
 .one { top:12%; right:15%; }.two { bottom:12%; left:18%; font-size:28px; animation-delay:.15s; }
 .caption { position:absolute; bottom:40px; display:flex; align-items:center; gap:8px; color:#766b5d; font-size:11px; letter-spacing:.03em; }
 .caption span { width:6px; height:6px; border-radius:50%; background:#b95135; }
@@ -31,17 +31,32 @@
 .two { font-size:15px; }
 .glass { border-width:3px; border-radius:10px; }
 
-/* Spray first, then wipe: one synchronized nine-second cycle. */
-.sprayer { position:absolute; top:8%; right:-18%; width:38%; height:70%; transform:translateZ(40px); animation:sprayBottle 9s infinite; filter:drop-shadow(3px 5px 3px #292d2b25); }
+/* Spray first, then wipe: one synchronized 5.2-second cycle. */
+.sprayer { position:absolute; top:8%; right:-18%; width:38%; height:70%; transform:translateZ(40px); animation:sprayBottle 5.2s infinite; filter:drop-shadow(3px 5px 3px #292d2b25); }
 .bottle { display:block; width:100%; height:100%; overflow:visible; }
 .mist { position:absolute; top:9%; left:25%; width:72%; height:45%; transform:translateZ(30px); pointer-events:none; }
-.mist i { position:absolute; top:20%; right:0; width:4px; height:4px; border-radius:50%; background:#e8fffb; box-shadow:-5px 2px 0 #e8fffb99; animation:mistBurst 9s infinite; --drift:0px; }
+.mist i { position:absolute; top:20%; right:0; width:4px; height:4px; border-radius:50%; background:#e8fffb; box-shadow:-5px 2px 0 #e8fffb99; animation:mistBurst 5.2s infinite; --drift:0px; }
 .mist i:nth-child(2) { top:10%; --drift:-12px; animation-delay:.08s; }
 .mist i:nth-child(3) { top:30%; --drift:10px; animation-delay:.14s; }
 .mist i:nth-child(4) { top:40%; --drift:18px; animation-delay:.2s; }
 .mist i:nth-child(5) { top:0%; --drift:-20px; animation-delay:.25s; }
-.droplets { position:absolute; inset:0; background:radial-gradient(circle at 25% 30%,#f0fffa 0 2px,transparent 3px),radial-gradient(circle at 60% 20%,#f0fffa 0 2px,transparent 3px),radial-gradient(circle at 40% 65%,#f0fffa 0 2px,transparent 3px),radial-gradient(circle at 80% 50%,#f0fffa 0 2px,transparent 3px),radial-gradient(circle at 55% 85%,#f0fffa 0 1px,transparent 2px); animation:wetGlass 9s infinite; }
+.droplets { position:absolute; inset:0; background:radial-gradient(circle at 25% 30%,#f0fffa 0 2px,transparent 3px),radial-gradient(circle at 60% 20%,#f0fffa 0 2px,transparent 3px),radial-gradient(circle at 40% 65%,#f0fffa 0 2px,transparent 3px),radial-gradient(circle at 80% 50%,#f0fffa 0 2px,transparent 3px),radial-gradient(circle at 55% 85%,#f0fffa 0 1px,transparent 2px); animation:wetGlass 5.2s infinite; }
 @keyframes sprayBottle { 0%,5% { opacity:0; transform:translate3d(15px,8px,40px) rotate(12deg); } 10%,29% { opacity:1; transform:translate3d(0,0,40px) rotate(-12deg); } 35%,100% { opacity:0; transform:translate3d(20px,10px,40px) rotate(12deg); } }
 @keyframes mistBurst { 0%,12%,21%,31%,100% { opacity:0; transform:translate3d(0,0,0) scale(.4); } 14%,24% { opacity:.9; transform:translate3d(-12px,0,0) scale(.8); } 20%,30% { opacity:0; transform:translate3d(-75px,var(--drift),0) scale(1.4); } }
 @keyframes wetGlass { 0%,14% { opacity:0; transform:translateX(0); } 30%,40% { opacity:.8; transform:translateX(0); } 70%,100% { opacity:0; transform:translateX(102%); } }
 @media(prefers-reduced-motion:reduce) { .sprayer,.mist,.droplets { display:none; } }
+
+/* A softer, compact illustration that belongs to the cream service card. */
+.scene { perspective:700px; }
+.halo { width:94%; background:radial-gradient(circle at 40% 30%,#f7f2e9,#eae2d570); border:1px solid #e8dfd240; }
+.object { width:66%; transform:rotateX(13deg) rotateY(-12deg) rotateZ(-9deg); }
+.glass { border:4px solid #ece4d8; border-radius:13px; background:linear-gradient(140deg,#dae8e5,#f5faf5 50%,#cdded8); box-shadow:1px 1px 0 #c8bfb1,2px 2px 0 #c8bfb1,3px 3px 0 #c8bfb1,8px 12px 16px #54473620,inset 0 0 12px #ffffff80; }
+.reflection { opacity:.65; }
+.tool { width:12%; filter:drop-shadow(2px 3px 2px #292d2b25); }
+.blade { border-radius:4px; background:linear-gradient(90deg,#343b37 0 23%,#bcc4bb 25%,#f5f4eb 52%,#8f9c91 80%,#343b37 90%); box-shadow:1px 0 0 #252b28; }
+.handle { width:135%; border-radius:5px 9px 9px 5px; background:linear-gradient(#cf8065,#b95135 55%,#99472f); box-shadow:0 2px 0 #87422f; }
+.neck { border-radius:3px; }
+.sprayer { width:32%; right:-10%; filter:drop-shadow(2px 3px 2px #292d2b20); }
+.sparkle { color:#fffdfa; font-size:19px; text-shadow:0 0 5px #a9b8aa; }
+.two { font-size:12px; }
+@keyframes sweep { 0%,36% { transform:translate3d(-30%,0,16px); opacity:0; } 40% { transform:translate3d(-30%,0,16px); opacity:1; } 70% { transform:translate3d(810%,0,16px); opacity:1; } 76%,100% { transform:translate3d(850%,0,24px); opacity:0; } }
