@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Home, Layers, MapPin, Mail, ArrowUpRight, Menu, X, ChevronDown } from "lucide-react";
+import { Home, Layers, Mail, ArrowUpRight, Menu, X, ChevronDown } from "lucide-react";
 import styles from "./Navbar.module.css";
 
 const services = [
@@ -27,7 +27,7 @@ export default function Navbar() {
   const menuTrigger = useRef(null);
   const serviceTrigger = useRef(null);
   const contact = pathname.startsWith("/services/") ? "#contact" : "/#contact";
-  const links = [["Home", "/", Home], ["Service Areas", "/service-areas", MapPin], ["Contact", contact, Mail]];
+  const links = [["Home", "/", Home], ["Contact", contact, Mail]];
 
   useEffect(() => { setMenuOpen(false); setServicesOpen(false); }, [pathname]);
   useEffect(() => {
@@ -74,7 +74,7 @@ export default function Navbar() {
       }}>
         <div className={styles.bar}>
           <Link href="/" className={styles.brand} aria-label="Mertin Home Services LLC home" onClick={close}>
-            <span className={styles.wordmark}>Mertin.</span><span className={styles.caption}>HOME SERVICES LLC</span>
+            <span className={styles.wordmark}>Mertin.</span>
           </Link>
           <span className={styles.divider} aria-hidden="true" />
           <nav className={styles.links} aria-label="Main navigation">
