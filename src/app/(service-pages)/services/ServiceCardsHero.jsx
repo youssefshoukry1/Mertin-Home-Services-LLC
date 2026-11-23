@@ -4,32 +4,32 @@ import styles from "./ServiceCardsHero.module.css";
 const services = {
   "handyman-services": {
     title: "Handyman Services in Cape Coral",
-    line: "A helping hand around your home.",
-    description: "From shelf mounting to door adjustments and everyday fixes, get practical help with the jobs on your home to-do list.",
+    line: "Maintenance across your property.",
+    description: "Combine fixture adjustments, mounting, and general maintenance into a defined scope across rooms or units.",
     alt: "Handyman with tools ready to help around your home",
   },
   "home-repairs": {
     title: "Home Repairs in Cape Coral",
-    line: "Bring comfort back to your home.",
-    description: "Give worn fittings, damaged trim, and everyday household problems the attention they need. Tell us what needs fixing.",
+    line: "Restore function. Address wear.",
+    description: "Plan repairs to walls, trim, cabinets, and fittings around property condition, access, and occupancy.",
     alt: "Home repair professional beside a cabinet",
   },
   "assembly-installation": {
     title: "Assembly & Installation in Cape Coral",
-    line: "Ready for everyday living.",
-    description: "Get help turning boxes of parts into useful furniture and fitting the household items that make your space work for you.",
+    line: "Prepare spaces for use.",
+    description: "Coordinate furniture assembly, shelving, and fixture installation across rooms or units. Share quantities and installation requirements so we can assess the scope.",
     alt: "Assembly professional with a drill and shelving unit",
   },
   "cleaning-services": {
     title: "Cleaning Services in Cape Coral",
-    line: "A fresh start for your space.",
-    description: "From busy kitchens to everyday living areas, get help keeping your home clean, comfortable, and ready to enjoy.",
+    line: "Keep spaces ready for occupants.",
+    description: "Define cleaning priorities by area, surface, and use. Share access requirements and your preferred schedule so we can discuss a plan.",
     alt: "Cleaning professional with a cloth and cleaning supplies",
   },
   "home-renovation": {
     title: "Home Renovation in Cape Coral",
-    line: "Make more of the home you have.",
-    description: "Explore painting, trim updates, and practical room improvements. Share how you want your home to look and feel.",
+    line: "Improve existing spaces.",
+    description: "Plan painting, flooring updates, and finish improvements around the condition of the property and how the space will be used.",
     alt: "Renovation professional with painting tools and a stepladder",
   },
 };

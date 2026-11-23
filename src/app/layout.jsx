@@ -6,7 +6,7 @@ import WhatsApp from "./WhatsApp/WhatsApp";
 
 export const metadata = {
   title: "Mertin Home Services LLC",
-  description: "Home services, repairs, assembly, installation, cleaning, and renovation in Cape Coral, Florida, and surrounding areas.",
+  description: "Property maintenance, repairs, installation, cleaning, and renovation for property owners, managers, and businesses in Cape Coral, Florida.",
 };
 
 export default function RootLayout({ children }) {

@@ -4,7 +4,6 @@ import ServiceCardsHero from "../ServiceCardsHero";
 import ServiceProcess from "../ServiceProcess";
 import HandymanIncluded from "../HandymanIncluded";
 import AboutIntro from "../../../About/AboutIntro";
-import About from "../../../About/About";
 import ServiceFaq from "../ServiceFaq";
 import BeforeAfter from "../BeforeAfter";
 import Contact from "../../../Contact/Contact";
@@ -23,7 +22,11 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  return { title: `${services[slug] || "Service"} | Mertin Home Services LLC` };
+  const name = services[slug] || "Property Services";
+  return {
+    title: `${name} | Mertin Home Services LLC`,
+    description: `Discuss ${name.toLowerCase()} for your property in Cape Coral, Florida, and surrounding areas. Share your scope, access requirements, and preferred timeline.`,
+  };
 }
 
 export default async function ServicePage({ params }) {
@@ -36,7 +39,6 @@ export default async function ServicePage({ params }) {
       <HandymanIncluded serviceSlug={slug} />
       <ServiceProcess serviceSlug={slug} />
       <AboutIntro serviceSlug={slug} />
-      <About />
       <BeforeAfter serviceSlug={slug} />
       <ServiceFaq serviceSlug={slug} />
       <Contact defaultService={slug} />

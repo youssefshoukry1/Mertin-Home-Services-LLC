@@ -20,7 +20,7 @@ export default function Footer() {
    <div data-motion-section className={styles.banner}>
     <img src="/images/service-hero/home-renovation-2.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
     <div className={styles.bannerContent}>
-     <h2>Let&apos;s talk about<br />your home project.</h2>
+     <h2>Let&apos;s talk about<br />your property project.</h2>
      <Link href={contact} data-motion-cta className={styles.button}>Request service <ArrowUpRight size={18} aria-hidden="true" /></Link>
     </div>
    </div>
@@ -28,7 +28,7 @@ export default function Footer() {
     <div data-motion-section className={styles.columns}>
      <div data-motion-item className={styles.intro}>
       <Link href="/" className={styles.brand} aria-label="Mertin Home Services LLC home">Mertin.<span>HOME SERVICES LLC</span></Link>
-      <p>Practical help with repairs, cleaning, assembly, and improvements. Care for the place you call home.</p>
+      <p>Maintenance, repairs, installation, cleaning, and renovation for property owners, managers, and businesses.</p>
       <span className={styles.area}>Cape Coral &amp; surrounding areas</span>
      </div>
      <nav data-motion-item className={styles.group} aria-label="Footer services">

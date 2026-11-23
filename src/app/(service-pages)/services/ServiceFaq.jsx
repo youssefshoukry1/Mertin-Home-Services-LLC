@@ -7,10 +7,10 @@ const serviceQuestions = {
   "handyman-services": [
     [
       "What kinds of handyman jobs can I request?",
-      "Tell us about shelf mounting, curtain rods, door adjustments, or other small household maintenance tasks. Include photos so we can confirm whether the job fits our service."
+      "Tell us about shelf mounting, curtain rods, door adjustments, or other property maintenance tasks. Include photos so we can confirm whether the job fits our service."
     ],
     [
-      "Can I include several small jobs in one request?",
+      "Can I include work across several rooms or units?",
       "Yes. List each task in your message, with its location and any relevant photos. This helps us understand the full scope before discussing a visit."
     ],
     [
@@ -29,7 +29,7 @@ const serviceQuestions = {
   "home-repairs": [
     [
       "What home repairs can I ask about?",
-      "You can ask about small drywall repairs, damaged trim, cabinet fittings, and minor surface damage. Send photos and a description so we can assess the scope."
+      "You can ask about drywall patching, damaged trim, cabinet fittings, and minor surface damage. Send photos and a description so we can assess the scope."
     ],
     [
       "What photos help you understand the damage?",

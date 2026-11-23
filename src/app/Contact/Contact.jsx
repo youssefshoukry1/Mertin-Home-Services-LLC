@@ -53,8 +53,8 @@ export default function Contact({ defaultService = "" }) {
       <div className={styles.container}>
         <header data-motion-group className={styles.heading}>
           <span className={styles.badge}>Contact</span>
-          <h2 id="contact-title">Tell us about <em>your home project.</em></h2>
-          <p>Which service do you need, and what needs attention?<br />Share a few details to help us understand your project.</p>
+          <h2 id="contact-title">Tell us about <em>your property project.</em></h2>
+          <p>Share the property type, location, scope, and preferred timeline so we can review your request.</p>
         </header>
         <div className={styles.columns}>
           <form data-motion-item className={styles.form} onSubmit={event => { event.preventDefault(); if (!new FormData(event.currentTarget).get("service")) { setNotice("Please choose a service."); event.currentTarget.querySelector('[role="combobox"]')?.focus(); return; } celebrate(); setNotice("Online requests are not available yet. Your message has not been sent."); }}>
@@ -67,7 +67,7 @@ export default function Contact({ defaultService = "" }) {
               <label>Phone number<input name="phone" type="tel" autoComplete="tel" placeholder="Your phone number" /></label>
               <ServicePicker key={requestedService} defaultService={requestedService} />
             </div>
-            <label className={styles.message}>Your project *<textarea value={message} onChange={event => setMessage(event.target.value)} name="message" placeholder="Tell us what you need help with, where the work is, and any details we should know." rows={3} required /></label>
+            <label className={styles.message}>Your project *<textarea value={message} onChange={event => setMessage(event.target.value)} name="message" placeholder="Include the property type, site location, areas involved, and preferred timeline." rows={3} required /></label>
             <label className={styles.upload}>Project photos <span>(optional)</span><input type="file" name="photos" accept="image/*" multiple onChange={attach} /><small>{files.length ? `${files.length} photo${files.length === 1 ? "" : "s"} selected` : "Up to 5 photos / 10 MB each"}</small></label>
             <div className={styles.submitGroup} data-celebrating={celebrating}>
               {celebrating && <div className={styles.confetti} aria-hidden="true">{Array.from({length:18},(_,i)=><i key={i} style={{"--x":`${(i%6)*42-105}px`,"--y":`${-35-(i%4)*24}px`,"--r":`${i*57}deg`,"--delay":`${(i%3)*65}ms`,background:["#958777","#c4a45b","#a4988b"][i%3]}} />)}</div>}
@@ -80,8 +80,8 @@ export default function Contact({ defaultService = "" }) {
               <img className={styles.worker} src={celebrating ? "/images/contact-worker-celebrate.webp" : "/images/service-workers/handyman-services.webp"} alt="Mertin home service worker" width="900" height="1200" loading="lazy" decoding="async" />
             </div>
             <div className={styles.infoCard}>
-              <div className={styles.infoItem}><span className={styles.infoIcon} aria-hidden="true">?</span><div><small>Local home services</small><strong>Cape Coral &amp; surrounding areas</strong></div></div>
-              <div className={styles.infoItem}><span className={styles.infoIcon} aria-hidden="true">?</span><div><small>Practical help for your home</small><strong>Repairs, cleaning &amp; improvements</strong></div></div>
+              <div className={styles.infoItem}><span className={styles.infoIcon} aria-hidden="true">?</span><div><small>Service area</small><strong>Cape Coral &amp; surrounding areas</strong></div></div>
+              <div className={styles.infoItem}><span className={styles.infoIcon} aria-hidden="true">?</span><div><small>Property services</small><strong>Repairs, cleaning &amp; improvements</strong></div></div>
               <div className={styles.infoItem}><span className={styles.infoIcon} aria-hidden="true">?</span><div><small>Help us understand your project</small><strong>Attach up to 5 photos</strong></div></div>
             </div>
           </aside>

@@ -21,8 +21,8 @@ export default function AboutIntro({ serviceSlug = "handyman-services" }) {
       <div className={styles.inner}>
         <div data-motion-group className={styles.copy}>
           <span className={styles.eyebrow}>ABOUT MERTIN</span>
-          <h2 id="about-title">Your home deserves<br />a helping hand.</h2>
-          <p>Mertin Home Services LLC helps homeowners in Cape Coral and surrounding areas with repairs, cleaning, assembly, and home improvements. Tell us what needs attention, and we&apos;ll help you take the next step.</p>
+          <h2 id="about-title">A property services<br />partner.</h2>
+          <p>Mertin Home Services LLC works with property owners, managers, and businesses in Cape Coral and surrounding areas. Share the scope, expected timeline, and site requirements to start the conversation.</p>
           <div className={styles.actions}>
             <a data-motion-cta href="#contact">Tell us about your project</a>
             <a data-motion-cta="secondary" href="/#services">Explore our services</a>

@@ -5,31 +5,31 @@ const services = [
   {
     title: "Handyman Services",
     slug: "handyman-services",
-    description: "Get help with shelf mounting, curtain rods, door adjustments, and the small jobs around your home.",
+    description: "Combine fixture adjustments, mounting, and general maintenance into a defined scope across rooms or units.",
     alt: "Handyman working on a home installation",
   },
   {
     title: "Home Repairs",
     slug: "home-repairs",
-    description: "Give worn fittings, damaged walls, and everyday household problems the attention they need.",
+    description: "Plan repairs to walls, trim, cabinets, and fittings around property condition, access, and occupancy.",
     alt: "Home repair professional working on furniture",
   },
   {
     title: "Assembly & Installation",
     slug: "assembly-installation",
-    description: "Bring your space together with help assembling furniture and installing household items.",
+    description: "Coordinate furniture assembly, shelving, and fixture installation across rooms or units. Share quantities and installation requirements so we can assess the scope.",
     alt: "Assembly professional with tools beside home furniture",
   },
   {
     title: "Cleaning Services",
     slug: "cleaning-services",
-    description: "Freshen up your kitchen, living areas, and everyday spaces with cleaning that fits your home.",
+    description: "Define cleaning priorities by area, surface, and use. Share access requirements and your preferred schedule so we can discuss a plan.",
     alt: "Cleaning professional holding cleaning supplies",
   },
   {
     title: "Home Renovation",
     slug: "home-renovation",
-    description: "Explore painting, trim updates, and room improvements to make more of the home you have.",
+    description: "Plan painting, flooring updates, and finish improvements around the condition of the property and how the space will be used.",
     alt: "Home renovation work in progress",
   },
 ];
@@ -39,8 +39,8 @@ export default function Services() {
     <section data-motion-section id="services" className={styles.section} aria-labelledby="services-title">
       <div className={styles.container}>
         <div data-motion-group className={styles.header}>
-          <h2 id="services-title">How can we help at home?</h2>
-          <p>Explore our services and tell us what your home needs.</p>
+          <h2 id="services-title">Property services</h2>
+          <p>Explore our capabilities and identify the services your property needs.</p>
         </div>
         <div className={styles.grid}>
           {services.map((service) => (

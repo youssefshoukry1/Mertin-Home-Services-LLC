@@ -8,13 +8,13 @@ export default function ServiceHero() {
       </svg>
       <div className={styles.inner}>
         <div className={styles.content}>
-          <span className={styles.badge}>A helping hand for your home</span>
-          <h1 id="service-hero-title">Home services in<br /><span>Cape Coral &amp; beyond.</span></h1>
-          <p>From everyday repairs and cleaning to assembly and home improvements, Mertin Home Services LLC helps you care for the place you call home.</p>
-          <div className={styles.coverage}><strong>Local home care:</strong> Cape Coral, Florida &amp; surrounding areas</div>
+          <span className={styles.badge}>Mertin Home Services LLC</span>
+          <h1 id="service-hero-title">Professional services for<br /><span>the properties you manage.</span></h1>
+          <p>Maintenance, repairs, installation, cleaning, and renovation for property owners, managers, and businesses.</p>
+          <div className={styles.coverage}><strong>Service area:</strong> Cape Coral, Florida &amp; surrounding areas</div>
           <div className={styles.actions}>
-            <a data-motion-cta className={styles.primary} href="#contact">Tell us what you need <span aria-hidden="true">&#8599;</span></a>
-            <a data-motion-cta="secondary" className={styles.secondary} href="#planner">Estimate your project</a>
+            <a data-motion-cta className={styles.primary} href="#contact">Discuss your project <span aria-hidden="true">&#8599;</span></a>
+            <a data-motion-cta="secondary" className={styles.secondary} href="#planner">Plan your scope</a>
           </div>
           <span className={styles.note}>Repairs &middot; Cleaning &middot; Assembly &middot; Home improvements</span>
         </div>

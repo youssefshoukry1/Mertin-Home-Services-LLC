@@ -14,9 +14,9 @@ export default function ServiceAreas() {
       <p className={styles.globeHint}><span className={styles.locationDot} aria-hidden="true" />Cape Coral, Florida · Drag to explore</p>
       <div className={styles.container}>
         <header className={styles.header}>
-          <p>LOCAL HOME SERVICES</p>
-          <h2 id="service-areas-title">A little help.<br />A better home.</h2>
-          <span>From the small fixes on your list to a fresh start for your space, Mertin Home Services LLC helps you take care of the place you call home.</span>
+          <p>SERVICE AREA</p>
+          <h2 id="service-areas-title">Property services<br />in Cape Coral.</h2>
+          <span>Mertin Home Services LLC provides maintenance and improvement services in Cape Coral, Florida, and surrounding areas.</span>
           <p className={styles.coverage}>Serving Cape Coral, Florida, and surrounding areas. Tell us where you are and what your home needs.</p>
           <a href="/#contact" data-motion-cta className={styles.cta}>Let&apos;s talk about your project</a>
         </header>

@@ -186,7 +186,7 @@ export function Reveal2({ badge, heading, description, highlights = [], beforeIm
     </section>);
 }
 const transformations = {
-  "handyman-services": ["Small fixes, everyday comfort", "A sagging closet shelf and loose rail restored to a useful storage space.", "Level shelving", "Secure fittings", "Practical storage"],
+  "handyman-services": ["Restored storage and fittings", "A sagging closet shelf and loose rail restored to a useful storage space.", "Level shelving", "Secure fittings", "Practical storage"],
   "home-repairs": ["Give your home a fresh finish", "Damaged drywall and chipped trim repaired for a smooth, consistent finish.", "Patched drywall", "Restored trim", "Matching paint"],
   "assembly-installation": ["From parts to ready to use", "Flat-pack panels become a neatly assembled cabinet in the same space.", "Careful assembly", "Aligned doors", "Ready for everyday use"],
   "cleaning-services": ["A cleaner space to come home to", "Everyday kitchen buildup removed from the cooktop, counters, and sink.", "Clean cooking surfaces", "Fresh countertops", "Polished sink"],

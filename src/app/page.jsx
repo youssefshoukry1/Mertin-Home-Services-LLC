@@ -6,7 +6,6 @@ import ServiceOverview from "./Services/ServiceOverview";
 import ProjectPlanner from "./Services/ProjectPlanner";
 import HomeCare from "./Services/HomeCare";
 import HomeSupport from "./Services/HomeSupport";
-import About from "./About/About";
 import ServiceAreas from "./ServiceAreas/ServiceAreas";
 
 export default function Home() {
@@ -20,7 +19,6 @@ export default function Home() {
       <Services />
       <HomeCare />
       <HomeSupport />
-      <About />
       <ProjectPlanner />
       <ServiceAreas />
       <Contact />
