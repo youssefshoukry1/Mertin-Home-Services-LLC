@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styles from "./ServiceOverview.module.css";
-import CleaningScene from "./CleaningScene";
 
 export default function ServiceOverview() {
   return (
@@ -17,7 +16,6 @@ export default function ServiceOverview() {
           <article data-motion-item className={styles.feature}>
             <div className={styles.workerScene}>
               <img className={styles.workerImage} src="/images/overview-worker.webp" alt="Home cleaning professional seated with a microfiber cloth" width="800" height="1000" loading="lazy" decoding="async" />
-              <div className={styles.cleaningAccent}><CleaningScene /></div>
             </div>
             <div className={styles.featureContent}>
               <h3>A fresher,<br />more comfortable home.</h3>
