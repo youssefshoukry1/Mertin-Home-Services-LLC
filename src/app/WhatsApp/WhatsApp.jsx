@@ -9,15 +9,22 @@ function WhatsAppIcon() {
 
 export default function WhatsApp() {
   const [open, setOpen] = useState(false);
+  const [openedAt, setOpenedAt] = useState("");
   const [message, setMessage] = useState("");
   const [notice, setNotice] = useState("");
+  const [showGreeting, setShowGreeting] = useState(false);
   const panel = useRef(null);
   const trigger = useRef(null);
   const input = useRef(null);
   const number = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "4915214760899").replace(/\D/g, "");
 
   useEffect(() => {
-    if (!open) return;
+    if (!open) {
+      setShowGreeting(false);
+      return;
+    }
+    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 600;
+    const greetingTimer = window.setTimeout(() => setShowGreeting(true), delay);
     input.current?.focus({ preventScroll: true });
     function key(event) {
       if (event.key === "Escape") { setOpen(false); trigger.current?.focus(); }
@@ -27,32 +34,35 @@ export default function WhatsApp() {
     }
     document.addEventListener("keydown", key);
     document.addEventListener("pointerdown", outside);
-    return () => { document.removeEventListener("keydown", key); document.removeEventListener("pointerdown", outside); };
+    return () => { window.clearTimeout(greetingTimer); document.removeEventListener("keydown", key); document.removeEventListener("pointerdown", outside); };
   }, [open]);
 
   function send(event) {
     event.preventDefault();
     if (!number) { setNotice("WhatsApp is not connected yet. Please use our contact form to tell us about your project."); return; }
-    window.open(`https://wa.me/${number}?text=${encodeURIComponent(message.trim() || "Hi Mertin! I would like help with a home project.")}`, "_blank", "noopener,noreferrer");
+    window.open(`https://wa.me/${number}?text=${encodeURIComponent(message.trim() || "Hi Mertin! I would like help with a property project.")}`, "_blank", "noopener,noreferrer");
   }
 
   return <div className={styles.widget}>
-    {open && <section ref={panel} id="whatsapp-chat" className={styles.panel} role="dialog" aria-label="Chat with Mertin Home Services">
+    <section inert={!open} aria-hidden={!open} data-open={open} ref={panel} id="whatsapp-chat" className={styles.panel} role="dialog" aria-label="Chat with Mertin Home Services">
       <header className={styles.header}>
         <div className={styles.avatar} aria-hidden="true">M<span /></div>
-        <div><h2>Mertin Home Services</h2><p>Let’s talk about your home.</p></div>
+        <div><h2>Mertin Home Services</h2><p>Let’s talk about your property.</p></div>
         <button className={styles.close} type="button" aria-label="Close chat" onClick={() => { setOpen(false); trigger.current?.focus(); }}>×</button>
       </header>
       <div className={styles.conversation}>
-        <span className={styles.label}>Start a conversation</span>
-        <p className={styles.bubble}>Hi there! How can we help with your home today?</p>
+        <span className={styles.label}>{openedAt}</span>
+        <div className={styles.bubble} aria-live="polite">
+          {showGreeting ? <span className={styles.greeting}>Hello! How can we help with your property?</span> :
+            <span className={styles.typing} aria-hidden="true"><i /><i /><i /></span>}
+        </div>
       </div>
       <form className={styles.composer} onSubmit={send}>
         <input ref={input} aria-label="Your WhatsApp message" placeholder="Type your message…" value={message} onChange={event => setMessage(event.target.value)} maxLength={2000} />
         <button type="submit" aria-label="Continue in WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="m3 3 19 9-19 9 4-9-4-9Z"/><path d="M7 12h15"/></svg></button>
       </form>
       {notice && <p role="status" className={styles.notice}>{notice} <a href="#contact" onClick={() => setOpen(false)}>Contact us</a></p>}
-    </section>}
-    <button ref={trigger} type="button" className={styles.launcher} aria-label={open ? "Close WhatsApp chat" : "Open WhatsApp chat"} aria-expanded={open} aria-controls="whatsapp-chat" onClick={() => setOpen(value => !value)}><WhatsAppIcon /><span className={styles.dot} aria-hidden="true" /></button>
+    </section>
+    <button ref={trigger} type="button" className={styles.launcher} aria-label={open ? "Close WhatsApp chat" : "Open WhatsApp chat"} aria-expanded={open} aria-controls="whatsapp-chat" onClick={() => { if (!open) setOpenedAt(new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })); setOpen(!open); }}><WhatsAppIcon /><span className={styles.dot} aria-hidden="true" /></button>
   </div>;
 }
